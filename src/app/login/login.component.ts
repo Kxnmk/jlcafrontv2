@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
     ngOnInit() {}
 
     onLoggedin() {
-        
     }
     checkLoggin() {
         const usuario = (<HTMLInputElement>document.getElementById('usuario')).value;
@@ -48,4 +47,3 @@ export class LoginComponent implements OnInit {
     }
 
     }
-}
