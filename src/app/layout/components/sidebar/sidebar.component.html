@@ -1,10 +1,58 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <div class="list-group">
+        <a routerLink="/inicio" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-th-large"></i>&nbsp;{{ 'Inicio' | translate }}
+        </a>
+        <a routerLink="/audiencias" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Audiencias' | translate }}
+        </a>
+        <a routerLink="/comisiones" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-slideshare"></i>&nbsp;{{ 'Comisiones' | translate }}
+        </a>
+        <a routerLink="/demandas" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-archive"></i>&nbsp;{{ 'Demandas' | translate }}
+        </a>
+        <a routerLink="/documentos" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-files-o"></i>&nbsp;{{ 'Documentos' | translate }}
+        </a>
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('pages')">
+                <span>
+                    <i class="fa fa-plus"></i>&nbsp; {{ 'Catalogos' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pages'">
+                <ul class="submenu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Actores' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Demandados' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Mesas' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Usuarios' | translate }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+
+
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
+            <i class="fa fa-fw fa-th-large"></i>&nbsp;{{ 'Inicio' | translate }}
         </a>
         <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Charts' | translate }}
+            <i class="fa fa-fw fa-hand-grab-o"></i>&nbsp;{{ 'Charts' | translate }}
         </a>
         <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Tables' | translate }}
@@ -21,24 +69,7 @@
         <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-th-list"></i>&nbsp;{{ 'Component' | translate }}
         </a>
-        <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('pages')">
-                <span><i class="fa fa-plus"></i>&nbsp; {{ 'Catalogos' | translate }}</span>
-            </a>
-            <li class="nested" [class.expand]="showMenu === 'pages'">
-                <ul class="submenu">
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                    </li>
-                </ul>
-            </li>
-        </div>
+       
         <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-file-o"></i>&nbsp;{{ 'Blank Page' | translate }}
         </a>
