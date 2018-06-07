@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
 
+
 @Component({
     selector: 'app-usuarios',
     templateUrl: './usuarios.component.html',
@@ -9,6 +10,6 @@ import { routerTransition } from '../../../router.animations';
 })
 export class UsuariosComponent implements OnInit {
     constructor() {}
-
     ngOnInit() {}
+
 }

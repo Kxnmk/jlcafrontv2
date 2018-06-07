@@ -5,10 +5,10 @@ export interface Usuario {
 
     usrClave: number;
     usrNombre: string;
-    usrRol: string;
+    usrRol?: string;
     usrName: string;
-    usrPassword: string;
-    usrRandom: string;
+    usrPassword?: string;
+    usrRandom?: string;
     RolNombre: string;
 }
 
