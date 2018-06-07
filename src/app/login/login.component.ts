@@ -42,14 +42,12 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/inicio']);
                 } else {
                     this.toastr.error('Usuario o contraseña no valida intente de nuevo');
-                    //this._alert.create('error', 'Usuario o contraseña no valida intente de nuevo', Alert_settings);
                     console.log('Usuario o contraseña no valida');
                 }
             },
             err => {
                 console.log(err);
                 this.toastr.error('Error en el servidor');
-                //this._alert.create('error', 'Error en el servidor');
                 console.log('Error en el servidor');
             });
     }
