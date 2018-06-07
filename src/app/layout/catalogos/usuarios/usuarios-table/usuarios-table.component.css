@@ -1,4 +1,8 @@
-.usuarios-table{
-    width: 70%;
-    margin: 20px auto;
+table {
+  width: 50%;
+}
+
+
+td, th {
+  width: 25%;
 }

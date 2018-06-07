@@ -31,6 +31,7 @@ const EXAMPLE_DATA: UsuariosTableItem[] = [
   {id: 18, name: 'Argon'},
   {id: 19, name: 'Potassium'},
   {id: 20, name: 'Calcium'},
+  {id: 21, name: 'Hey' },
 ];
 
 /**
