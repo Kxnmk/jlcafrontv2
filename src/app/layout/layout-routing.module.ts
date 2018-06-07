@@ -14,6 +14,10 @@ const routes: Routes = [
             { path: 'comisiones', loadChildren: './comisiones/comisiones.module#ComisionesModule' },
             { path: 'demandas', loadChildren: './demandas/demandas.module#DemandasModule' },
             { path: 'documentos', loadChildren: './documentos/documentos.module#DocumentosModule' },
+            { path: 'actores', loadChildren: './catalogos/actores/actores.module#ActoresModule' },
+            { path: 'demandados', loadChildren: './catalogos/demandados/demandados.module#DemandadosModule' },
+            { path: 'mesas', loadChildren: './catalogos/mesas/mesas.module#MesasModule' },
+            { path: 'usuarios', loadChildren: './catalogos/usuarios/usuarios.module#UsuariosModule' },
 
 
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
