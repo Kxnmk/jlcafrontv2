@@ -14,7 +14,10 @@ export class SidebarComponent {
     usuarioName;
 
     constructor(private translate: TranslateService, public router: Router) {
-        this.usuarioName = JSON.parse(sessionStorage.getItem('User'))[0].usrNombre;
+        try {
+            this.usuarioName = JSON.parse(sessionStorage.getItem('User'))[0].usrNombre;
+        } catch (error) {}
+
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
         this.translate.setDefaultLang('en');
         const browserLang = this.translate.getBrowserLang();

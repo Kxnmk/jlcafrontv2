@@ -7,6 +7,9 @@ import { UrlServ } from '../global-setting';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../classes/Usuario';
 
+// Toast
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -15,7 +18,7 @@ import { Usuario } from '../classes/Usuario';
 })
 export class LoginComponent implements OnInit {
     uLog: Usuario[];
-    constructor(private _http: HttpClient, public router: Router) {}
+    constructor(private _http: HttpClient, public router: Router, private toastr: ToastrService) {}
 
     ngOnInit() {}
 
@@ -27,20 +30,25 @@ export class LoginComponent implements OnInit {
         const cred = { usrName: usuario, usrPassword: password };
 
         console.log(UrlServ + '/usuarios/auth');
+        this.toastr.info('Cargando', 'Conectado con el servidor', {
+            timeOut: 1000
+        });
         this._http.post<Usuario[]>(UrlServ + '/usuarios/auth', cred).subscribe(
             data => {
                 if (data.length !== 0) {
                     this.uLog = data;
                     sessionStorage.setItem('User', JSON.stringify(this.uLog));
                     localStorage.setItem('isLoggedin', 'true');
-                    this.router.navigate(['/dashboard']);
+                    this.router.navigate(['/inicio']);
                 } else {
+                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
                     //this._alert.create('error', 'Usuario o contraseña no valida intente de nuevo', Alert_settings);
                     console.log('Usuario o contraseña no valida');
                 }
             },
             err => {
                 console.log(err);
+                this.toastr.error('Error en el servidor');
                 //this._alert.create('error', 'Error en el servidor');
                 console.log('Error en el servidor');
             });

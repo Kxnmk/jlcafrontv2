@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
 import { FormsModule } from '@angular/forms';
+// Toast
+import { ToastrModule } from 'ngx-toastr';
 
 
 // AoT requires an exported function for factories
@@ -29,6 +31,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
+        ToastrModule.forRoot(),
         FormsModule,
         HttpClientModule,
         TranslateModule.forRoot({

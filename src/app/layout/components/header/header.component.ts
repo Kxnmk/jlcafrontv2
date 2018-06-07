@@ -14,7 +14,9 @@ export class HeaderComponent implements OnInit {
 
     constructor(private translate: TranslateService, public router: Router) {
 
-        this.usuarioName = JSON.parse(sessionStorage.getItem('User'))[0].usrNombre;
+        try{
+            this.usuarioName = JSON.parse(sessionStorage.getItem('User'))[0].usrNombre;
+        } catch (Error) {}
 
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
