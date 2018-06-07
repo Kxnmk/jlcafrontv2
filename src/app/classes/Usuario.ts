@@ -9,7 +9,8 @@ export interface Usuario {
     usrName: string;
     usrPassword?: string;
     usrRandom?: string;
-    RolNombre: string;
+    RolNombre?: string;
+    RolDescripcion?: string;
 }
 
 export class UsuarioC {
