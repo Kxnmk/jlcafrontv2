@@ -5,6 +5,7 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 import { UsuarioServiceService } from './../../../../shared/services/usuario-service.service';
 import { Usuario } from './../../../../classes/Usuario';
 
+
 // TODO: Replace this with your own data model type
 export interface UsuariosTableItem {
   name: string;
@@ -24,8 +25,9 @@ const EXAMPLE_DATA: Usuario[] = [
 export class UsuariosTableDataSource extends DataSource<Usuario> {
   data: Usuario[] = EXAMPLE_DATA;
 
-  constructor(private paginator: MatPaginator, private sort: MatSort) {
+  constructor(private paginator: MatPaginator, private sort: MatSort, private usuarios: Usuario[]) {
     super();
+    this.data = usuarios;
   }
 
   /**
