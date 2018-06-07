@@ -1,18 +1,18 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <div class="list-group">
-        <a routerLink="/inicio" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['/inicio']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-th-large"></i>&nbsp;{{ 'Inicio' | translate }}
         </a>
-        <a routerLink="/audiencias" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['/audiencias']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Audiencias' | translate }}
         </a>
-        <a routerLink="/comisiones" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['/comisiones']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-slideshare"></i>&nbsp;{{ 'Comisiones' | translate }}
         </a>
-        <a routerLink="/demandas" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['/demandas']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-archive"></i>&nbsp;{{ 'Demandas' | translate }}
         </a>
-        <a routerLink="/documentos" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a [routerLink]="['/documentos']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-files-o"></i>&nbsp;{{ 'Documentos' | translate }}
         </a>
         <div class="nested-menu">
@@ -23,22 +23,22 @@
             <li class="nested" [class.expand]="showMenu === 'pages'">
                 <ul class="submenu">
                     <li>
-                        <a href="javascript:void(0)">
+                        <a [routerLink]="['/actores']">
                             <span>{{ 'Actores' | translate }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
+                        <a [routerLink]="['/demandados']">
                             <span>{{ 'Demandados' | translate }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
+                        <a [routerLink]="['/mesas']">
                             <span>{{ 'Mesas' | translate }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
+                        <a [routerLink]="['/usuarios']">
                             <span>{{ 'Usuarios' | translate }}</span>
                         </a>
                     </li>
