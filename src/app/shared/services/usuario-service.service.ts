@@ -11,11 +11,16 @@ export class UsuarioServiceService {
   usuarios: Usuario[] = [];
 
   constructor(private _http: HttpClient ) {
-
     this.usuarios = new Array<Usuario>();
   }
 
   getUsuarios(): Observable<Usuario[]> {
     return this._http.get<Usuario[]>(UrlServ + '/usuarios');
+  }
+  setUsuarios(usuarios: Usuario[]) {
+    this.usuarios = usuarios;
+  }
+  getUsuariosO(): Usuario[] {
+    return this.usuarios;
   }
 }

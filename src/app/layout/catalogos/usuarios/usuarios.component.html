@@ -3,6 +3,25 @@
     <p>Hola desde Usuarios</p>
 
     <!-- Tabla -->
-     <usuarios-table></usuarios-table>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios; let i = index">
+                <th scope="row">{{usuario.usrClave}}</th>
+                <td>{{usuario.usrNombre}}</td>
+                <td>{{usuario.usrName}}</td>
+                <td>{{usuario.RolDescripcion}}</td>
+                <td><button type="button" class="btn btn-sm btn-success">Modificar</button> <button type="button" class="btn btn-sm btn-danger">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>
