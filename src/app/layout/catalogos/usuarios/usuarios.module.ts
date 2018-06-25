@@ -5,9 +5,12 @@ import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { UsuariosComponent } from './usuarios.component';
 import { PageHeaderModule } from './../../../shared';
 
+import { UsuarioServiceService} from './../../../shared/services/usuario-service.service';
+
 
 @NgModule({
     imports: [CommonModule, UsuariosRoutingModule, PageHeaderModule],
-    declarations: [UsuariosComponent]
+    declarations: [UsuariosComponent],
+    providers: [UsuarioServiceService]
 })
 export class UsuariosModule {}

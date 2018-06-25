@@ -10,9 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
-import { FormsModule } from '@angular/forms';
 // Toast
 import { ToastrModule } from 'ngx-toastr';
+import { UsuarioServiceService} from './shared/services/usuario-service.service';
+
+// Forms
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -45,7 +48,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers: [AuthGuard],
+    providers: [AuthGuard, UsuarioServiceService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -18,6 +18,7 @@ const routes: Routes = [
             { path: 'demandados', loadChildren: './catalogos/demandados/demandados.module#DemandadosModule' },
             { path: 'mesas', loadChildren: './catalogos/mesas/mesas.module#MesasModule' },
             { path: 'usuarios', loadChildren: './catalogos/usuarios/usuarios.module#UsuariosModule' },
+            { path: 'mUsuario/:id', loadChildren: './catalogos/usuarios/musuario/mUsuario.module#MusuarioModule'},
 
 
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },

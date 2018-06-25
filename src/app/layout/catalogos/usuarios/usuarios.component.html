@@ -19,7 +19,7 @@
                 <td>{{usuario.usrNombre}}</td>
                 <td>{{usuario.usrName}}</td>
                 <td>{{usuario.RolDescripcion}}</td>
-                <td><button type="button" class="btn btn-sm btn-success">Modificar</button> <button type="button" class="btn btn-sm btn-danger">Eliminar</button></td>
+                <td><button type="button" [routerLink]="['/mUsuario',i]" class="btn btn-sm btn-success">Modificar</button></td>
             </tr>
         </tbody>
     </table>
