@@ -22,6 +22,9 @@ const routes: Routes = [
             { path: 'mUsuario', loadChildren: './catalogos/usuarios/musuario/mUsuario.module#MusuarioModule' },
             { path: 'mActor/:id', loadChildren: './catalogos/actores/mActor/mActor.module#MActorModule' },
             { path: 'mActor', loadChildren: './catalogos/actores/mActor/mActor.module#MActorModule' },
+            { path: 'mDemandado/:id', loadChildren: './catalogos/demandados/mDemandados/mDemandado.module#MDemandadoModule' },
+            { path: 'mDemandado', loadChildren: './catalogos/demandados/mDemandados/mDemandado.module#MDemandadoModule' },
+
 
 
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },

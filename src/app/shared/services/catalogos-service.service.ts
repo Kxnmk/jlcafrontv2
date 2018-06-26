@@ -8,6 +8,7 @@ import { Actor } from '../../classes/Actor';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Demandado, DemandadoC } from '../../classes/Demandado';
 
 
 @Injectable({
@@ -15,6 +16,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class CatalogosServiceService {
   actores: Actor[];
+  demandados: Demandado[];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -25,6 +27,8 @@ export class CatalogosServiceService {
 
   constructor(private _http: HttpClient ) { }
 
+  // Actores
+
   getActores(): Observable<Actor[]> {
     return this._http.get<Actor[]>(UrlServ + '/actores');
   }
@@ -33,10 +37,6 @@ export class CatalogosServiceService {
   }
   getActorbyId(i: number): Actor {
     return this.actores[i];
-  }
-  getNextIdA(): number {
-    console.log(this.actores.length + 1);
-    return this.actores.length + 1;
   }
 
   updateActor(nActor: Actor): Observable<any> {
@@ -47,5 +47,26 @@ export class CatalogosServiceService {
   addActor(nActor: Actor): Observable<any> {
     const aux = JSON.stringify(nActor);
     return this._http.post<any>(UrlServ + '/actores' , aux, this.httpOptions);
+  }
+
+  // Demandados
+  getDemandados(): Observable<Demandado[]> {
+    return this._http.get<Demandado[]>(UrlServ + '/demandados');
+  }
+  setDemandados(demandados: Demandado[]) {
+    this.demandados = demandados;
+  }
+  getDemandadobyId(i: number): Demandado {
+    return this.demandados[i];
+  }
+
+  updateDemandado(nDemandado: Demandado): Observable<any> {
+    const aux = JSON.stringify(nDemandado);
+    console.log(aux);
+    return this._http.put<any>(UrlServ + '/demandados/' + nDemandado.DeoClave, aux, this.httpOptions);
+  }
+  addDemandado(nDemandado: Demandado): Observable<any> {
+    const aux = JSON.stringify(nDemandado);
+    return this._http.post<any>(UrlServ + '/demandados', aux, this.httpOptions);
   }
 }

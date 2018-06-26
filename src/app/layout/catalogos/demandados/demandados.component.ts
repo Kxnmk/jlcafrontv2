@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
+import { Demandado } from '../../../classes/Demandado';
+import { CatalogosServiceService } from '../../../shared/services/catalogos-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-demandados',
@@ -8,7 +12,25 @@ import { routerTransition } from '../../../router.animations';
     animations: [routerTransition()]
 })
 export class DemandadosComponent implements OnInit {
-    constructor() {}
+    demandados: Demandado[];
+    constructor(private _Cservice: CatalogosServiceService, private toastr: ToastrService, private router: Router) { }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this._Cservice.getDemandados().subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.demandados = data;
+
+                } else {
+                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+            });
+    }
+    agregar() {
+        this.router.navigate(['/mDemandado']);
+    }
 }
