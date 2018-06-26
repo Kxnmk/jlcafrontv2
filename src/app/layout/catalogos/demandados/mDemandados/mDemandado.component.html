@@ -1,0 +1,93 @@
+<div [@routerTransition]>
+    <div class="row">
+        <div class="col-xl-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <i class="fa fa-address-book"></i>
+                    <a href="Javascript:void(0)" [routerLink]="['/demandados']"> <== Demandados</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+    
+    <form role="form">
+    
+        <div class="form-group input-group" id='fClave'>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Clave
+                </span>
+            </div>
+            <input id="DeoClave" type="text" class="form-control" placeholder="Clave de Usuario" value="{{demandado.DeoClave
+            }}" [disabled] = true>
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Nombre
+                </span>
+            </div>
+            <input id="DeoNombre" type="text" class="form-control" value="{{demandado.DeoNombre}}" placeholder="Nombre">
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Domicilio
+                </span>
+            </div>
+            <input id="DeoDomicilio" type="text" class="form-control" value="{{demandado.DeoDomicilio}}" placeholder="Domicilio">
+        </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Telefono
+                </span>
+            </div>
+            <input id="DeoTelefono" type="text" class="form-control" value="{{demandado.DeoTelefono}}" placeholder="Telefono">
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Correo
+                </span>
+            </div>
+            <input id="DeoCorreo" type="text" class="form-control" value="{{demandado.DeoCorreo}}" placeholder="Correo">
+        </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Nombre Representantes
+                </span>
+            </div>
+            <input id="DeoNombres" type="text" class="form-control" value="{{demandado.DeoNombreRepresentantes}}" placeholder="Nombres de Representantes">
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Persona Moral
+                </span>
+            </div>
+            <select class="form-control" id="DeoMoral">
+                <option value=1 [selected]="demandado.DeoMoral == 1"> Si</option>
+                <option value=0 [selected]="demandado.DeoMoral == 0"> No</option>
+            </select>
+        </div>
+
+
+
+
+        <a class="btn btn-success" (click)="guardar()" id="btnGuardar"> Guardar </a>
+
+    
+        
+    
+    </form>
+
+    
+</div>
