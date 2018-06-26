@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
+import { CatalogosServiceService} from '../../../shared/services/catalogos-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { Actor } from '../../../classes/Actor';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-actores',
@@ -8,7 +12,25 @@ import { routerTransition } from '../../../router.animations';
     animations: [routerTransition()]
 })
 export class ActoresComponent implements OnInit {
-    constructor() {}
+    actores: Actor[];
+    constructor(private _Cservice: CatalogosServiceService, private toastr: ToastrService, private router: Router) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this._Cservice.getActores().subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.actores = data;
+
+                } else {
+                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+            });
+    }
+    agregar() {
+        this.router.navigate(['/mActor']);
+    }
 }

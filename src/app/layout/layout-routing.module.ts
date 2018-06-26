@@ -19,6 +19,9 @@ const routes: Routes = [
             { path: 'mesas', loadChildren: './catalogos/mesas/mesas.module#MesasModule' },
             { path: 'usuarios', loadChildren: './catalogos/usuarios/usuarios.module#UsuariosModule' },
             { path: 'mUsuario/:id', loadChildren: './catalogos/usuarios/musuario/mUsuario.module#MusuarioModule'},
+            { path: 'mUsuario', loadChildren: './catalogos/usuarios/musuario/mUsuario.module#MusuarioModule' },
+            { path: 'mActor/:id', loadChildren: './catalogos/actores/mActor/mActor.module#MActorModule' },
+            { path: 'mActor', loadChildren: './catalogos/actores/mActor/mActor.module#MActorModule' },
 
 
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },

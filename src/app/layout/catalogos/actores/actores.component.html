@@ -1,4 +1,31 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Actores'" [icon]="'fa-street-view'"></app-page-header>
-    <p>Hola desde Actores</p>
+    <a class="btn btn-primary col-xl-3" (click)="agregar()"  id="btnAgregar"> Agregar Actor </a>
+
+    <!-- Tabla -->
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Domicilio</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let actor of actores; let i = index">
+                <th scope="row">{{actor.ActClave}}</th>
+                <td>{{actor.ActNombre}}</td>
+                <td>{{actor.ActDomicilio}}</td>
+                <td>{{actor.ActTelefono}}</td>
+                <td>{{actor.ActCorreo}}</td>
+                <td>
+                    <button type="button" [routerLink]="['/mActor',i]" class="btn btn-sm btn-success">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
