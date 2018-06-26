@@ -34,6 +34,10 @@ export class CatalogosServiceService {
   getActorbyId(i: number): Actor {
     return this.actores[i];
   }
+  getNextIdA(): number {
+    console.log(this.actores.length + 1);
+    return this.actores.length + 1;
+  }
 
   updateActor(nActor: Actor): Observable<any> {
     const aux = JSON.stringify(nActor);
