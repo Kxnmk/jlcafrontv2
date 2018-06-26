@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Demandado, DemandadoC } from '../../classes/Demandado';
+import { Mesa } from '../../classes/mesa';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ import { Demandado, DemandadoC } from '../../classes/Demandado';
 export class CatalogosServiceService {
   actores: Actor[];
   demandados: Demandado[];
+  mesas: Mesa[];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -68,5 +70,25 @@ export class CatalogosServiceService {
   addDemandado(nDemandado: Demandado): Observable<any> {
     const aux = JSON.stringify(nDemandado);
     return this._http.post<any>(UrlServ + '/demandados', aux, this.httpOptions);
+  }
+
+  // Mesas
+  getMesas(): Observable<Mesa[]> {
+    return this._http.get<Mesa[]>(UrlServ + '/mesas');
+  }
+  setMesas(mesas: Mesa[]) {
+    this.mesas = mesas;
+  }
+  getMesaById(i: number): Mesa {
+    return this.mesas[i];
+  }
+
+  updateMesa(nMesa: Mesa): Observable<any> {
+    const aux = JSON.stringify(nMesa);
+    return this._http.put<any>(UrlServ + '/mesas/' + nMesa.MesClave, aux, this.httpOptions);
+  }
+  addMesa(nMesa: Mesa): Observable<any> {
+    const aux = JSON.stringify(nMesa);
+    return this._http.post<any>(UrlServ + '/mesas', aux, this.httpOptions);
   }
 }

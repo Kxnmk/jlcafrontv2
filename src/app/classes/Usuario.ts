@@ -8,6 +8,16 @@ export interface Usuario {
     RolNombre?: string;
     RolDescripcion?: string;
 }
+export class UsuarioGC {
+    usrClave: number;
+    usrNombre: string;
+    usrRol?: string;
+    usrName: string;
+    usrPassword?: string;
+    usrRandom?: string;
+    RolNombre?: string;
+    RolDescripcion?: string;
+}
 
 export class UsuarioC {
     usrClave: number;
@@ -18,3 +28,15 @@ export class UsuarioC {
     usrRandom: string;
     RolNombre: string;
 }
+
+export class UsuarioG {
+    usrClave: number;
+    usrNombre: string;
+    usrName: string;
+    usrPassword: string;
+    usrRandom?: string;
+    usrRol: number;
+}
+
+
+

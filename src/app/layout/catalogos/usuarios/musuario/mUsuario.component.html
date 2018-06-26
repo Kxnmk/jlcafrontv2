@@ -57,11 +57,11 @@
                 </span>
             </div>
             <select class="form-control" id="usrRol">
-                <option *ngFor="let rol of roles; let i = index" value="{{i}}" [selected]="rol.RolDescripcion === user.RolDescripcion">{{rol.RolDescripcion}} </option>
+                <option *ngFor="let rol of roles; let i = index" value="{{rol.RolClave}}" [selected]="rol.RolDescripcion === user.RolDescripcion">{{rol.RolDescripcion}} </option>
             </select>
         </div>
 
-        <a class="btn btn-success" (click)="guardar()"> Guardar </a>
+        <a class="btn btn-success" (click)="guardar()" id="btnGuardar"> Guardar </a>
 
     
         

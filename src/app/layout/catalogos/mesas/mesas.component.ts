@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../router.animations';
+import { CatalogosServiceService } from '../../../shared/services/catalogos-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { Mesa } from '../../../classes/mesa';
 
 @Component({
     selector: 'app-mesas',
@@ -8,7 +12,25 @@ import { routerTransition } from '../../../router.animations';
     animations: [routerTransition()]
 })
 export class MesasComponent implements OnInit {
-    constructor() {}
+    mesas: Mesa[];
+    constructor(private _Cservice: CatalogosServiceService, private toastr: ToastrService, private router: Router) { }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this._Cservice.getMesas().subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.mesas = data;
+
+                } else {
+                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+            });
+    }
+    agregar() {
+        this.router.navigate(['/mMesa']);
+    }
 }

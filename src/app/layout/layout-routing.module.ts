@@ -24,6 +24,9 @@ const routes: Routes = [
             { path: 'mActor', loadChildren: './catalogos/actores/mActor/mActor.module#MActorModule' },
             { path: 'mDemandado/:id', loadChildren: './catalogos/demandados/mDemandados/mDemandado.module#MDemandadoModule' },
             { path: 'mDemandado', loadChildren: './catalogos/demandados/mDemandados/mDemandado.module#MDemandadoModule' },
+            { path: 'mMesa/:id', loadChildren: './catalogos/mesas/mMesa/mMesa.module#MMesaModule' },
+            { path: 'mMesa', loadChildren: './catalogos/mesas/mMesa/mMesa.module#MMesaModule' },
+
 
 
 

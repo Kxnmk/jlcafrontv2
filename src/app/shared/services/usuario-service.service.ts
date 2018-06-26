@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Usuario, UsuarioC} from './../../classes/Usuario';
+import { Usuario, UsuarioC, UsuarioG} from './../../classes/Usuario';
 import { Rol } from './../../classes/Rol';
 import { HttpClient } from '@angular/common/http';
 import { UrlServ } from './../../global-setting';
@@ -40,8 +40,13 @@ export class UsuarioServiceService {
   getRoles(): Observable<Rol[]>{
     return this._http.get<Rol[]>(UrlServ + '/roles');
   }
-  saveUsuario(nUser: UsuarioC): Observable<any>{
-    console.log(JSON.stringify(nUser));
-    return this._http.post<any>(UrlServ + '/usuarios', JSON.stringify(nUser), this.httpOptions);
+
+  updateUsuario(nUsuario: UsuarioG): Observable<any> {
+    const aux = JSON.stringify(nUsuario);
+    return this._http.put<any>(UrlServ + '/usuarios/' + nUsuario.usrClave, aux, this.httpOptions);
+  }
+  addUsuario(nUsuario: UsuarioG): Observable<any> {
+    const aux = JSON.stringify(nUsuario);
+    return this._http.post<any>(UrlServ + '/usuarios', aux, this.httpOptions);
   }
 }

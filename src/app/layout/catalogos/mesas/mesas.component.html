@@ -1,4 +1,26 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Mesas'" [icon]="'fa-clipboard'"></app-page-header>
-    <p>Hola desde Mesas</p>
+    <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Mesa </a>
+    
+    <!-- Tabla -->
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mesa of mesas; let i = index">
+                <th scope="row">{{mesa.MesClave}}</th>
+                <td>{{mesa.MesNombre}}</td>
+                <td>{{mesa.MesDescripcion}}</td>
+                <td>
+                    <button type="button" [routerLink]="['/mMesa',i]" class="btn btn-sm btn-success">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
