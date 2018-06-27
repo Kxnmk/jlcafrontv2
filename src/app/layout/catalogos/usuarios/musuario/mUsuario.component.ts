@@ -11,8 +11,8 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-musuario',
-    templateUrl: './musuario.component.html',
-    styleUrls: ['./musuario.component.scss'],
+    templateUrl: './mUsuario.component.html',
+    styleUrls: ['./mUsuario.component.scss'],
     animations: [routerTransition()]
 })
 export class MusuarioComponent implements OnInit {
