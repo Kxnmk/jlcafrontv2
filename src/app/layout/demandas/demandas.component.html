@@ -3,7 +3,7 @@
     <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Demanda </a>
     
     <!-- Tabla -->
-    <!-- <table class="table">
+    <table class="table">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
@@ -13,19 +13,24 @@
                 <th scope="col">Ciudad</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Tipo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let demanda of demandas; let i = index">
-                <th scope="row">{{demanda.DeoClave}}</th>
-                <td>{{demandado.DeoNombre}}</td>
-                <td>{{demandado.DeoDomicilio}}</td>
-                <td>{{demandado.DeoTelefono}}</td>
-                <td>{{demandado.DeoCorreo}}</td>
+                <th scope="row">{{demanda.DemClave}}</th>
+                <td>{{demanda.DemFolio}}</td>
+                <td>{{demanda.ActNombre}}</td>
+                <td>{{demanda.DeoNombre}}</td>
+                <td>{{demanda.DemCiudad}}</td>
+                <td>{{demanda.DemFecha | date: 'MM/dd/yyyy'}}</td>
+                <td>{{demanda.DemTipo}}</td>
+                <td>{{demanda.StaNombre}}</td>
                 <td>
-                    <button type="button" [routerLink]="['/mDemandado',i]" class="btn btn-sm btn-success">Modificar</button>
+                    <button type="button" [routerLink]="['/mDemanda',i]" class="btn btn-sm btn-success">Modificar</button>
                 </td>
             </tr>
         </tbody>
-    </table> -->
+    </table>
 </div>

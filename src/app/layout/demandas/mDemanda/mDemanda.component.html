@@ -1,0 +1,107 @@
+<div [@routerTransition]>
+    <div class="row">
+        <div class="col-xl-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <i class="fa fa-address-book"></i>
+                    <a href="Javascript:void(0)" [routerLink]="['/demandas']"> <== Demandados</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+    
+    <form role="form">
+    
+        <div class="form-group input-group" id='fClave'>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Clave
+                </span>
+            </div>
+            <input id="DemClave" type="text" class="form-control" placeholder="Clave de Demanda" value="{{demanda.DemClave}}" [disabled] = true>
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Folio
+                </span>
+            </div>
+            <input id="DemFolio" type="text" class="form-control" value="{{demanda.DemFolio}}" placeholder="Folio Demanda">
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Actor
+                </span>
+            </div>
+            <select class="form-control" id="DemClaveActor">
+                <option *ngFor="let actor of actores; let i = index" value="{{i}}" [selected]="actor.ActClave === demanda.DemClaveActor">{{actor.ActNombre}} </option>
+            </select>
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Demandado
+                </span>
+            </div>
+            <select class="form-control" id="DemClaveActor">
+                <option *ngFor="let demandado of demandados; let i = index" value="{{i}}" [selected]="demandado.DeoClave === demanda.DemClaveDemandado">{{demandado.DeoNombre}} </option>
+            </select>
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Ciudad
+                </span>
+            </div>
+            <input id="DemCiudad" type="text" class="form-control" value="{{demanda.DemCiudad}}" placeholder="Ciudad">
+        </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Fecha
+                </span>
+            </div>
+            <input id="DemFecha" type="text" class="form-control" value="{{demanda.DemFecha | date: 'MM/dd/yyyy'}}" placeholder="Fecha">
+        </div>
+        <!-- Fecha -->
+        
+
+        <!-- Termina Fecha -->
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Tipo
+                </span>
+            </div>
+            <input id="DemTipo" type="text" class="form-control" value="{{demanda.DemTipo}}" placeholder="Tipo">
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                    Status
+                </span>
+            </div>
+            <input id="demStatus" type="text" class="form-control" value="{{demanda.StaNombre}}" placeholder="Tipo">
+        </div>
+
+
+
+
+        <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
+
+    
+        
+    
+    </form>
+
+    
+</div>

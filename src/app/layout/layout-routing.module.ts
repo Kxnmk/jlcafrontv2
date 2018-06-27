@@ -28,9 +28,8 @@ const routes: Routes = [
             { path: 'mMesa', loadChildren: './catalogos/mesas/mMesa/mMesa.module#MMesaModule' },
             { path: 'permisos', loadChildren: './catalogos/permisos/permisos.module#PermisosModule' },
             { path: 'mPermiso/:id', loadChildren: './catalogos/permisos/mPermisos/mPermiso.module#MPermisoModule' },
-
-
-
+            { path: 'mDemanda/:id', loadChildren: './demandas/mDemanda/mDemanda.module#MDemandaModule' },
+            { path: 'mDemanda', loadChildren: './demandas/mDemanda/mDemanda.module#MDemandaModule' },
 
 
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },

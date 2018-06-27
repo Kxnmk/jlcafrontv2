@@ -84,9 +84,9 @@ export class MPermisoComponent implements OnInit {
             const check = (<HTMLInputElement>document.getElementById(ac));
             nStatus.SRClaveSta = i;
             if (check.checked) {
-                nStatus.Permiso = 'allow';
+                nStatus.Permiso = 'Allow';
             } else {
-                nStatus.Permiso = 'deny';
+                nStatus.Permiso = 'Deny';
             }
 
             this._Cservice.storeStatus(nStatus).subscribe(

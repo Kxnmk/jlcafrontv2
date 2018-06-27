@@ -1,21 +1,41 @@
-export interface Demanda {
-    DemClave?: number;
+export class Demanda {
+    DemClave: number;
     DemFolio: string;
-    DemClaveActor: string;
-    DeoTelefono?: string;
-    DeoCorreo?: string;
-    DeoNombreRepresentantes?: string;
-    DeoMoral?: number;
-}
-
-export class DemandaC {
-    DeoClave?: number;
-    DeoNombre: string;
-    DeoDomicilio: string;
-    DeoTelefono?: string;
-    DeoCorreo?: string;
-    DeoNombreRepresentantes?: string;
-    DeoMoral?: number;
+    DemClaveActor: number;
+    DemClaveDemandado: number;
+    DemCiudad: string;
+    DemFecha: string;
+    DemTipo: string;
     DemandadoC() {
     }
+}
+export interface DemandaCon {
+    DemClave: number;
+    DemFolio: string;
+    DemClaveActor: number;
+    DemClaveDemandado: number;
+    DemCiudad: string;
+    DemFecha: string;
+    DemTipo: string;
+    ActNombre: string;
+    DeoNombre: string;
+    StaNombre: string;
+    StaClave: string;
+    StaDescripcion: string;
+
+}
+export class DemandaConC {
+    DemClave: number;
+    DemFolio: string;
+    DemClaveActor: number;
+    DemClaveDemandado: number;
+    DemCiudad: string;
+    DemFecha: string;
+    DemTipo: string;
+    ActNombre: string;
+    DeoNombre: string;
+    StaNombre: string;
+    StaClave: string;
+    StaDescripcion: string;
+
 }
