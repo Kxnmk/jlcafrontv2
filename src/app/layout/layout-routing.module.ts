@@ -26,6 +26,9 @@ const routes: Routes = [
             { path: 'mDemandado', loadChildren: './catalogos/demandados/mDemandados/mDemandado.module#MDemandadoModule' },
             { path: 'mMesa/:id', loadChildren: './catalogos/mesas/mMesa/mMesa.module#MMesaModule' },
             { path: 'mMesa', loadChildren: './catalogos/mesas/mMesa/mMesa.module#MMesaModule' },
+            { path: 'permisos', loadChildren: './catalogos/permisos/permisos.module#PermisosModule' },
+            { path: 'mPermiso/:id', loadChildren: './catalogos/permisos/mPermisos/mPermiso.module#MPermisoModule' },
+
 
 
 

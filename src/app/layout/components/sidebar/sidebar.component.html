@@ -37,9 +37,14 @@
                             <i class="fa fa-fw fa-clipboard"></i>&nbsp;{{ 'Mesas' | translate }}
                         </a>
                     </li>
-                    <li>
+                    <li ng-if="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' ">
                         <a [routerLink]="['/usuarios']">
                             <i class="fa fa-fw fa-user"></i>&nbsp;{{ 'Usuarios' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/permisos']">
+                            <i class="fa fa-fw fa-key"></i>&nbsp;{{ 'Permisos' | translate }}
                         </a>
                     </li>
                 </ul>

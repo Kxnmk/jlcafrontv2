@@ -12,10 +12,12 @@ export class SidebarComponent {
     showMenu: string = '';
     pushRightClass: string = 'push-right';
     usuarioName;
+    usuarioRol;
 
     constructor(private translate: TranslateService, public router: Router) {
         try {
             this.usuarioName = JSON.parse(sessionStorage.getItem('User'))[0].usrNombre;
+            this.usuarioRol = JSON.parse(sessionStorage.getItem('User'))[0].RolNombre;
         } catch (error) {}
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);

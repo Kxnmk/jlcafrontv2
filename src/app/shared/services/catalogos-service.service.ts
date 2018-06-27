@@ -4,12 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { UrlServ } from './../../global-setting';
 import { HttpHeaders } from '@angular/common/http';
 import { Actor } from '../../classes/Actor';
+import { Status, StatusCon } from '../../classes/Status';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Demandado, DemandadoC } from '../../classes/Demandado';
 import { Mesa } from '../../classes/mesa';
+
+import { Rol } from './../../classes/Rol';
 
 
 @Injectable({
@@ -90,5 +93,20 @@ export class CatalogosServiceService {
   addMesa(nMesa: Mesa): Observable<any> {
     const aux = JSON.stringify(nMesa);
     return this._http.post<any>(UrlServ + '/mesas', aux, this.httpOptions);
+  }
+
+  // Permisos
+  getRoles(): Observable<Rol[]> {
+    return this._http.get<Rol[]>(UrlServ + '/roles');
+  }
+  getStatus(): Observable<Status[]>{
+    return this._http.get<Status[]>(UrlServ + '/statusRol');
+  }
+  getStatusOfRol(idRol: number): Observable<StatusCon[]> {
+    idRol++;
+    return this._http.get<StatusCon[]>(UrlServ + '/statusRol/' + idRol);
+  }
+  storeStatus(st: Status): Observable<any> {
+    return this._http.put<any>(UrlServ + '/statusRol/' + st.SRClaveRol, st, this.httpOptions);
   }
 }

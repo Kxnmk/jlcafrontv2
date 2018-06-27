@@ -1,0 +1,23 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Permisos'" [icon]="'fa-key'"></app-page-header>
+    
+    <!-- Tabla -->
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rol of roles; let i = index">
+                <th scope="row">{{rol.RolClave}}</th>
+                <td>{{rol.RolDescripcion}}</td>
+                <td>
+                    <button type="button" [routerLink]="['/mPermiso',i]" class="btn btn-sm btn-success">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
