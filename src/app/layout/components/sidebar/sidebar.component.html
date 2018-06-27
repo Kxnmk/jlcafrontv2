@@ -6,7 +6,7 @@
         <a [routerLink]="['/audiencias']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Audiencias' | translate }}
         </a>
-        <a [routerLink]="['/comisiones']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a ng-if="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' " [routerLink]="['/comisiones']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-slideshare"></i>&nbsp;{{ 'Comisiones' | translate }}
         </a>
         <a [routerLink]="['/demandas']" [routerLinkActive]="['router-link-active']" class="list-group-item">
@@ -42,7 +42,7 @@
                             <i class="fa fa-fw fa-user"></i>&nbsp;{{ 'Usuarios' | translate }}
                         </a>
                     </li>
-                    <li>
+                    <li ng-if="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' ">
                         <a [routerLink]="['/permisos']">
                             <i class="fa fa-fw fa-key"></i>&nbsp;{{ 'Permisos' | translate }}
                         </a>
