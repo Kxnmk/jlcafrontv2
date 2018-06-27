@@ -9,8 +9,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Domicilio</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Correo</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -19,8 +17,6 @@
                 <th scope="row">{{actor.ActClave}}</th>
                 <td>{{actor.ActNombre}}</td>
                 <td>{{actor.ActDomicilio}}</td>
-                <td>{{actor.ActTelefono}}</td>
-                <td>{{actor.ActCorreo}}</td>
                 <td>
                     <button type="button" [routerLink]="['/mActor',i]" class="btn btn-sm btn-success">Modificar</button>
                 </td>

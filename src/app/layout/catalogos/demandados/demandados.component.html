@@ -8,9 +8,6 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Domicilio</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Correo</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -18,9 +15,6 @@
             <tr *ngFor="let demandado of demandados; let i = index">
                 <th scope="row">{{demandado.DeoClave}}</th>
                 <td>{{demandado.DeoNombre}}</td>
-                <td>{{demandado.DeoDomicilio}}</td>
-                <td>{{demandado.DeoTelefono}}</td>
-                <td>{{demandado.DeoCorreo}}</td>
                 <td>
                     <button type="button" [routerLink]="['/mDemandado',i]" class="btn btn-sm btn-success">Modificar</button>
                 </td>
