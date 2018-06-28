@@ -3,10 +3,11 @@ import { routerTransition } from '../../../../router.animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioServiceService} from './../../../../shared/services/usuario-service.service';
 import { Usuario, UsuarioC, UsuarioGC, UsuarioG } from '../../../../classes/Usuario';
-import { Rol } from '../../../../classes/Rol';
+import { Rol, RolC } from '../../../../classes/Rol';
 // Toast
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Mesa } from '../../../../classes/mesa';
 
 
 @Component({
@@ -17,10 +18,13 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class MusuarioComponent implements OnInit {
     private parms: any;
-    private user: Usuario;
+    public user: Usuario;
     private index: number;
     private roles: Rol[];
     private form: FormGroup;
+    public mesas: Mesa[];
+    public hd = true;
+    public mesa = false;
 
     private action = 'creacion';
     private nextId: number;
@@ -33,6 +37,8 @@ export class MusuarioComponent implements OnInit {
     ngOnInit() {
 
         const fclave = <HTMLInputElement>document.getElementById('usrClave');
+
+
         this._Uservice.getRoles().subscribe(
             data => {
                 if (data.length !== 0) {
@@ -47,14 +53,34 @@ export class MusuarioComponent implements OnInit {
                 this.toastr.error('Error en el servidor');
                 console.log('Error en el servidor');
             });
+        this._Uservice.getMesas().subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.mesas = data;
+                } else {
+                    this.toastr.error('Error al traer la información');
+                    console.log('Usuario o contraseña no valida');
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+                console.log('Error en el servidor');
+            });
+
         this.parms = this.route.params.subscribe(params => {
             try {
                 this.index = +params['id'];
 
                 if (!isNaN(this.index)) {
-                    fclave.disabled = true;
+
+
+                    console.log('Modificaciones');
 
                     this.action = 'mod';
+                    this.hd = true;
+
+
 
 
                     this._Uservice.getUsuarios().subscribe(
@@ -62,6 +88,9 @@ export class MusuarioComponent implements OnInit {
                             if (data.length !== 0) {
                                 this._Uservice.setUsuarios(data);
                                 this.user = this._Uservice.getUsuariobyId(this.index);
+                                if (this.user.RolNombre === 'MES_A' ) {
+                                    this.mesa = true;
+                                }
                             } else {
                                 this.toastr.error('Error al obtener informacion');
 
@@ -73,16 +102,7 @@ export class MusuarioComponent implements OnInit {
 
                         });
                 } else {
-
-                    this._Uservice.getUsuarios().subscribe(
-                        data => {
-                            if (data.length !== 0) {
-                                fclave.value = '' + (data.length + 1);
-                            }
-                        },
-                        err => {
-                            console.log(err);
-                        });
+                    this.hd = false;
                 }
             } catch (err) {
             }
@@ -90,24 +110,54 @@ export class MusuarioComponent implements OnInit {
 
 
 
+
+    }
+
+    showMesa(rol) {
+        if (+rol === 4) {
+            this.mesa = true;
+        } else {
+            this.mesa = false;
+        }
+
     }
 
 
     guardar() {
+        let clave, mesaS;
         const btn = <HTMLInputElement>document.getElementById('btnGuardar');
         btn.style.display = 'none';
 
-        const clave = (<HTMLInputElement>document.getElementById('usrClave')).value;
+
         const nombre = (<HTMLInputElement>document.getElementById('usrNombre')).value;
         const usuario = (<HTMLInputElement>document.getElementById('usrName')).value;
         const password = (<HTMLInputElement>document.getElementById('usrPassword')).value;
         const rol = (<HTMLInputElement>document.getElementById('usrRol')).value;
+        
+
         const nuser = new UsuarioG();
-        nuser.usrClave = +clave;
+
         nuser.usrNombre = nombre;
         nuser.usrName = usuario;
         nuser.usrPassword = password;
         nuser.usrRol = +rol;
+        nuser.usrRandom = 'U-' + (Math.random() * 100);
+
+        const d = new Date();
+        nuser.fechaAsignacion = d.toISOString();
+
+        if (this.hd) {
+            console.log('Esta activa la clave');
+            clave = (<HTMLInputElement>document.getElementById('usrClave')).value;
+            nuser.usrClave = +clave;
+        }
+        if (this.mesa) {
+            mesaS = (<HTMLInputElement>document.getElementById('usrMesa')).value;
+            nuser.claveMesa = +mesaS;
+        }
+
+
+        console.log(nuser);
 
 
 

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { UrlServ } from './../../global-setting';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { Mesa } from '../../classes/mesa';
 
 
 @Injectable({
@@ -48,5 +49,10 @@ export class UsuarioServiceService {
   addUsuario(nUsuario: UsuarioG): Observable<any> {
     const aux = JSON.stringify(nUsuario);
     return this._http.post<any>(UrlServ + '/usuarios', aux, this.httpOptions);
+  }
+
+ // Catalogo Mesas Disponibles
+  getMesas(): Observable<Mesa[]> {
+    return this._http.get<Mesa[]>(UrlServ + '/mesas');
   }
 }

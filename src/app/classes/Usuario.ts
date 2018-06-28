@@ -7,6 +7,7 @@ export interface Usuario {
     usrRandom?: string;
     RolNombre?: string;
     RolDescripcion?: string;
+    ComClaveMesa?: number;
 }
 export class UsuarioGC {
     usrClave: number;
@@ -30,12 +31,14 @@ export class UsuarioC {
 }
 
 export class UsuarioG {
-    usrClave: number;
+    usrClave?: number;
     usrNombre: string;
     usrName: string;
     usrPassword: string;
     usrRandom?: string;
     usrRol: number;
+    claveMesa?: number;
+    fechaAsignacion: string;
 }
 
 

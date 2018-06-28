@@ -14,7 +14,7 @@
     
     <form role="form">
     
-        <div class="form-group input-group">
+        <div class="form-group input-group" *ngIf="hd">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">
                     Clave
@@ -29,7 +29,7 @@
                     Nombre
                 </span>
             </div>
-            <input id="usrNombre" type="text" class="form-control" value="{{user.usrNombre}}" placeholder="Nombre">
+            <input id="usrNombre" type="text" class="form-control" value="{{user.usrNombre}}" placeholder="Nombre Del Usuario">
         </div>
 
         <div class="form-group input-group">
@@ -47,7 +47,7 @@
                     Contraseña
                 </span>
             </div>
-            <input id="usrPassword" type="text" class="form-control" value="{{user.usrPassword}}">
+            <input id="usrPassword" type="text" class="form-control" value="{{user.usrPassword}}" placeholder="Contraseña">
         </div>
 
         <div class="form-group input-group">
@@ -56,9 +56,20 @@
                     Rol
                 </span>
             </div>
-            <select class="form-control" id="usrRol">
-                <option *ngFor="let rol of roles; let i = index" value="{{rol.RolClave}}" [selected]="rol.RolDescripcion === user.RolDescripcion">{{rol.RolDescripcion}} </option>
+            <select class="form-control" id="usrRol" (change)="showMesa($event.target.value)">
+                <option>Selecciona un Rol</option>>
+                <option *ngFor="let rol of roles; let i = index"  value="{{rol.RolClave}}" [selected]="rol.RolDescripcion === user.RolDescripcion">{{rol.RolDescripcion}} </option>
             </select>
+            <div class="input-group-prepend" *ngIf="mesa">
+                <span class="input-group-text" id="basic-addon1">
+                    Mesa
+                </span>
+            </div>
+            <select class="form-control" id="usrMesa" *ngIf="mesa">
+                <option>Selecciona una Mesa</option>>
+                <option *ngFor="let mesa of mesas; let i = index" value="{{mesa.MesClave}}" [selected]="mesa.MesClave === user.ComClaveMesa">{{mesa.MesNombre}} </option>
+            </select>
+            
         </div>
 
         <a class="btn btn-success" (click)="guardar()" id="btnGuardar"> Guardar </a>
