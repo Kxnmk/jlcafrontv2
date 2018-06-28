@@ -15,69 +15,76 @@
     <form role="form">
     
         <div class="form-group input-group" *ngIf="hd">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Clave
                 </span>
+                <input id="usrClave" type="text" class="form-control" placeholder="Clave de Usuario" value="{{user.usrClave}}" [disabled]=true>
             </div>
-            <input id="usrClave" type="text" class="form-control" placeholder="Clave de Usuario" value="{{user.usrClave}}" [disabled] = true>
         </div>
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Nombre
                 </span>
+                <input id="usrNombre" type="text" class="form-control" value="{{user.usrNombre}}" placeholder="Nombre Del Usuario">
             </div>
-            <input id="usrNombre" type="text" class="form-control" value="{{user.usrNombre}}" placeholder="Nombre Del Usuario">
         </div>
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Usuario
                 </span>
+                <input id="usrName" type="text" class="form-control" value="{{user.usrName}}" placeholder="Usuario de Inicio de Sesion">
             </div>
-            <input id="usrName" type="text" class="form-control" value="{{user.usrName}}" placeholder="Usuario de Inicio de Sesion">
         </div>
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Contraseña
                 </span>
+                <input id="usrPassword" type="text" class="form-control" value="{{user.usrPassword}}" placeholder="Contraseña">
             </div>
-            <input id="usrPassword" type="text" class="form-control" value="{{user.usrPassword}}" placeholder="Contraseña">
-        </div>
-
-        <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
-                    Rol
-                </span>
-            </div>
-            <select class="form-control" id="usrRol" (change)="showMesa($event.target.value)">
-                <option>Selecciona un Rol</option>>
-                <option *ngFor="let rol of roles; let i = index"  value="{{rol.RolClave}}" [selected]="rol.RolDescripcion === user.RolDescripcion">{{rol.RolDescripcion}} </option>
-            </select>
-            <div class="input-group-prepend" *ngIf="mesa">
-                <span class="input-group-text" id="basic-addon1">
-                    Mesa
-                </span>
-            </div>
-            <select class="form-control" id="usrMesa" *ngIf="mesa">
-                <option>Selecciona una Mesa</option>>
-                <option *ngFor="let mesa of mesas; let i = index" value="{{mesa.MesClave}}" [selected]="mesa.MesClave === user.ComClaveMesa">{{mesa.MesNombre}} </option>
-            </select>
             
         </div>
 
-        <a class="btn btn-success" (click)="guardar()" id="btnGuardar"> Guardar </a>
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                    Rol
+                </span>
+                <select class="form-control" id="usrRol" (change)="showMesa($event.target.value)">
+                    <option>Selecciona un Rol</option>>
+                    <option *ngFor="let rol of roles; let i = index" value="{{rol.RolClave}}" [selected]="rol.RolDescripcion === user.RolDescripcion">{{rol.RolDescripcion}} </option>
+                </select>
+                <div class="input-group-prepend" *ngIf="mesa">
+                    <span class="input-group-text" id="basic-addon1">
+                        Mesa
+                    </span>
+                </div>
+                <select class="form-control" id="usrMesa" *ngIf="mesa">
+                    <option>Selecciona una Mesa</option>>
+                    <option *ngFor="let mesa of mesas; let i = index" value="{{mesa.MesClave}}" [selected]="mesa.MesClave === user.ComClaveMesa">{{mesa.MesNombre}} </option>
+                </select>
+            </div>
+            
+        </div>
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group justify-content-center">
+                <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
+                <a class="btn btn-danger text-white" (click)="guardar()" id="btnGuardar"> Borrar </a>
+            </div> 
+        </div>
 
-    
         
-    
+
     </form>
 
+    <!-- Cambio de diseño -->
+
+    
     
 </div>

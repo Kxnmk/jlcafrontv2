@@ -15,37 +15,52 @@
     <form role="form">
     
         <div class="form-group input-group" id='fClave'>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Clave Rol
                 </span>
+                    <input id="RolClave" type="text" class="form-control" placeholder="Clave de Rol" value="{{rol.RolClave}}" [disabled]=true>
             </div>
-            <input id="RolClave" type="text" class="form-control" placeholder="Clave de Rol" value="{{rol.RolClave}}" [disabled] = true>
         </div>
 
-        <div class="form-group input-group" id='fClave'>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+        <div class="form-group input-group" >
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Descripcion Rol
                 </span>
-            </div>
-            <input id="RolDescripcion" type="text" class="form-control" placeholder="Descripcion Rol" value="{{rol.RolDescripcion}}" [disabled]=true>
-        </div>
-
-        <div class="form-group">
-            <label>Permisos</label>
-            <div class="checkbox" *ngFor="let status of statusR; let i = index">
-                <label>
-                    <input type="checkbox" id="chk{{i}}" [checked]="status.Permiso == 'Allow'" value="{{status.Permiso}}"> {{status.StaNombre}}
-                </label>
+                <input id="RolDescripcion" type="text" class="form-control" placeholder="Descripcion Rol" value="{{rol.RolDescripcion}}" [disabled]=true>
             </div>
         </div>
 
 
+        <div class="col-8 col-sm-8 offset-sm-2">
+            <p class="bg-primary text-white text-center">Permisos</p>
+            
+        </div>
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend" *ngFor="let status of statusR; let i = index">
+                <div class="input-group mb-3" >
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="checkbox" id="chk{{i}}" [checked]="status.Permiso == 'Allow'" value="{{status.Permiso}}">
+                        </div>
+                    </div>
+                    <input type="text" class="form-control bg-light text-dark" [disabled]=true value="{{status.StaNombre}}">
+                </div>
+
+            </div>
+        </div>
 
 
 
-        <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
+
+
+
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group justify-content-center">
+                <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
+            </div>
+        </div>
 
     
         

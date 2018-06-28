@@ -133,7 +133,7 @@ export class MusuarioComponent implements OnInit {
         const usuario = (<HTMLInputElement>document.getElementById('usrName')).value;
         const password = (<HTMLInputElement>document.getElementById('usrPassword')).value;
         const rol = (<HTMLInputElement>document.getElementById('usrRol')).value;
-        
+
 
         const nuser = new UsuarioG();
 
@@ -154,6 +154,8 @@ export class MusuarioComponent implements OnInit {
         if (this.mesa) {
             mesaS = (<HTMLInputElement>document.getElementById('usrMesa')).value;
             nuser.claveMesa = +mesaS;
+        } else {
+            nuser.claveMesa = null;
         }
 
 

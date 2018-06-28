@@ -15,95 +15,98 @@
     <form role="form">
     
         <div class="form-group input-group" id='fClave'>
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Clave
                 </span>
+                <input id="DemClave" type="text" class="form-control" placeholder="Clave de Demanda" value="{{demanda.DemClave}}" [disabled]=true>
             </div>
-            <input id="DemClave" type="text" class="form-control" placeholder="Clave de Demanda" value="{{demanda.DemClave}}" [disabled] = true>
         </div>
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Folio
                 </span>
+                <input id="DemFolio" type="text" class="form-control" value="{{demanda.DemFolio}}" placeholder="Folio Demanda">
             </div>
-            <input id="DemFolio" type="text" class="form-control" value="{{demanda.DemFolio}}" placeholder="Folio Demanda">
         </div>
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Actor
                 </span>
+                <select class="form-control" id="DemClaveActor">
+                    <option>Selecciona Actor</option>>
+                    <option *ngFor="let actor of actores; let i = index" value="{{actor.ActClave}}" [selected]="actor.ActClave === demanda.DemClaveActor">{{actor.ActNombre}} </option>
+                </select>
             </div>
-            <select class="form-control" id="DemClaveActor">
-                <option>Selecciona Actor</option>>
-                <option *ngFor="let actor of actores; let i = index" value="{{actor.ActClave}}" [selected]="actor.ActClave === demanda.DemClaveActor">{{actor.ActNombre}} </option>
-            </select>
         </div>
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Demandado
                 </span>
+                <select class="form-control" id="DemClaveDemandado">
+                    <option>Selecciona Demandado</option>>
+                    <option *ngFor="let demandado of demandados; let i = index" value="{{demandado.DeoClave}}" [selected]="demandado.DeoClave === demanda.DemClaveDemandado">{{demandado.DeoNombre}} </option>
+                </select>
             </div>
-            <select class="form-control" id="DemClaveDemandado">
-                <option>Selecciona Demandado</option>>
-                <option *ngFor="let demandado of demandados; let i = index" value="{{demandado.DeoClave}}" [selected]="demandado.DeoClave === demanda.DemClaveDemandado">{{demandado.DeoNombre}} </option>
-            </select>
         </div>
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Ciudad
                 </span>
+                <input id="DemCiudad" type="text" class="form-control" value="{{demanda.DemCiudad}}" placeholder="Ciudad">
             </div>
-            <input id="DemCiudad" type="text" class="form-control" value="{{demanda.DemCiudad}}" placeholder="Ciudad">
         </div>
         
         <!-- Fecha -->
         
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Fecha
                 </span>
+                <input id="DemFecha" type="date" class="form-control" value="{{demanda.DemFecha | date: 'yyyy-MM-dd' : 'UTC'}}" placeholder="Fecha">
             </div>
-            <input id="DemFecha" type="date" class="form-control" value="{{demanda.DemFecha | date: 'yyyy-MM-dd' : 'UTC'}}" placeholder="Fecha">
         </div>
 
         <!-- Termina Fecha -->
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Tipo
                 </span>
+                <input id="DemTipo" type="text" class="form-control" value="{{demanda.DemTipo}}" placeholder="Tipo">
             </div>
-            <input id="DemTipo" type="text" class="form-control" value="{{demanda.DemTipo}}" placeholder="Tipo">
         </div>
 
         <div class="form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Status
                 </span>
+                <select class="form-control" id="demStatus">
+                    <option>Selecciona Status</option>>
+                    <option *ngFor="let stat of status; let i = index" value="{{stat.StaClave}}" [selected]="stat.StaClave === demanda.StaClave">{{stat.StaNombre}} </option>
+                </select>
             </div>
-            <select class="form-control" id="demStatus">
-                <option>Selecciona Status</option>>
-                <option *ngFor="let stat of status; let i = index" value="{{stat.StaClave}}" [selected]="stat.StaClave === demanda.StaClave">{{stat.StaNombre}} </option>
-            </select>
         </div>
 
 
 
 
-
-        <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group justify-content-center">
+                <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
+            </div>
+        </div>
 
     
         
