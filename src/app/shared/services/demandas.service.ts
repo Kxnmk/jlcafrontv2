@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Usuario, UsuarioC, UsuarioG } from './../../classes/Usuario';
-import { Rol } from './../../classes/Rol';
 import { HttpClient } from '@angular/common/http';
 import { UrlServ } from './../../global-setting';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
-import { DemandaCon, Demanda } from '../../classes/Demanda';
+import { DemandaCon, Demanda, DemandaI } from '../../classes/Demanda';
 import { Actor } from '../../classes/Actor';
 import { Demandado } from '../../classes/Demandado';
+import { StaCatalogo, Status, StatusDemanda } from '../../classes/Status';
 
 @Injectable({
   providedIn: 'root'
@@ -35,13 +34,15 @@ export class DemandasService {
   getDemandaById(i: number): DemandaCon {
     return this.demandas[i];
   }
+  countDemandas(): Observable<DemandaI[]> {
+    return this._http.get<DemandaI[]>(UrlServ + '/demandas');
+  }
 
   updateDemanda(nDemanda: Demanda): Observable<any> {
     const aux = JSON.stringify(nDemanda);
-    console.log(aux);
     return this._http.put<any>(UrlServ + '/demandas/' + nDemanda.DemClave, aux, this.httpOptions);
   }
-  addActor(nDemanda: Demanda): Observable<any> {
+  addDemanda(nDemanda: Demanda): Observable<any> {
     const aux = JSON.stringify(nDemanda);
     return this._http.post<any>(UrlServ + '/demandas', aux, this.httpOptions);
   }
@@ -54,6 +55,21 @@ export class DemandasService {
   // Demandados Catalogo
   getDemandados(): Observable<Demandado[]> {
     return this._http.get<Demandado[]>(UrlServ + '/demandados');
+  }
+
+  // Estatus status Catalogo
+  getStatus(): Observable<StaCatalogo[]>{
+    return this._http.get<StaCatalogo[]>(UrlServ + '/status');
+  }
+
+  // Update Status
+  updateStatusD(nStatus: StatusDemanda): Observable<any> {
+    const aux = JSON.stringify(nStatus);
+    return this._http.put<any>(UrlServ + '/statusD/' + nStatus.SDClaveDem, aux, this.httpOptions);
+  }
+  addStatusD(nStatus: StatusDemanda): Observable<any> {
+    const aux = JSON.stringify(nStatus);
+    return this._http.post<any>(UrlServ + '/statusD', aux, this.httpOptions);
   }
 
 }

@@ -11,9 +11,10 @@ import { ToastrService } from 'ngx-toastr';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { style } from '@angular/animations';
-import { DemandaCon, DemandaConC } from '../../../classes/Demanda';
+import { DemandaCon, DemandaConC, Demanda } from '../../../classes/Demanda';
 import { DemandasService } from '../../../shared/services/demandas.service';
 import { Demandado } from '../../../classes/Demandado';
+import { Status, StaCatalogo, StatusDemanda } from '../../../classes/Status';
 
 
 @Component({
@@ -32,13 +33,17 @@ export class MDemandaComponent implements OnInit {
     public actores: Actor[];
     public demandados: Demandado[];
     clave;
-    
+    public status: StaCatalogo[];
+    private usI: number;
+
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _DService: DemandasService) {
             this.demanda = new DemandaConC();
 
             try {
                 this.rol = JSON.parse(sessionStorage.getItem('User'))[0].RolClave;
+                this.usI = JSON.parse(sessionStorage.getItem('User'))[0].usrClave;
+
             } catch (Error) { }
 
             this._DService.getActores().subscribe(
@@ -71,17 +76,36 @@ export class MDemandaComponent implements OnInit {
 
             });
 
+        this._DService.getStatus().subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.status = data;
+                } else {
+                    this.toastr.error('Error al obtener informacion');
+
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+
+            });
+
+        
+
         }
 
     ngOnInit() {
 
-        const fclave = <HTMLInputElement>document.getElementById('DemFolio');
+        const fclave = <HTMLInputElement>document.getElementById('DemClave');
+        const ffolio = <HTMLInputElement>document.getElementById('DemFolio');
         this.parms = this.route.params.subscribe(params => {
             try {
                 this.index = +params['id'];
 
                 if ( !isNaN(this.index) ) {
                     fclave.disabled = true;
+                    ffolio.disabled = true;
 
                     this.action = 'mod';
 
@@ -103,20 +127,17 @@ export class MDemandaComponent implements OnInit {
                         });
                 } else {
 
-                    this._DService.getDemadnasByRol(this.rol).subscribe(
+                    this._DService.countDemandas().subscribe(
                         data => {
+                            console.log(data);
                             if (data.length !== 0) {
-
-                                fclave.value = '' + (data.length + 1);
+                                this.nextId = data.length;
+                            } else {
+                                this.nextId = 0;
                             }
-                        },
-                        err => {
-                            console.log(err);
-                        });
-
-
-
-
+                            fclave.value = '' + (this.nextId + 1);
+                        }
+                    );
 
                 }
 
@@ -132,54 +153,85 @@ export class MDemandaComponent implements OnInit {
 
 
     guardar() {
-        // const btn = <HTMLInputElement>document.getElementById('btnGuardar');
-        // btn.style.display = 'none';
+        const btn = <HTMLInputElement>document.getElementById('btnGuardar');
+        btn.style.display = 'none';
 
-        // const clave = (<HTMLInputElement>document.getElementById('DeoClave')).value;
-        // const nombre = (<HTMLInputElement>document.getElementById('DeoNombre')).value;
-        // const domicilio = (<HTMLInputElement>document.getElementById('DeoDomicilio')).value;
-        // const telefono = (<HTMLInputElement>document.getElementById('DeoTelefono')).value;
-        // const correo = (<HTMLInputElement>document.getElementById('DeoCorreo')).value;
-        // const nombrs = (<HTMLInputElement>document.getElementById('DeoNombres')).value;
-        // const moral = (<HTMLInputElement>document.getElementById('DeoMoral')).value;
-        // const nDemandado = new DemandadoC();
-        // nDemandado.DeoClave = +clave;
-        // nDemandado.DeoNombre = nombre;
-        // nDemandado.DeoDomicilio = domicilio;
-        // nDemandado.DeoTelefono = telefono;
-        // nDemandado.DeoCorreo = correo;
-        // nDemandado.DeoNombreRepresentantes = nombrs;
-        // nDemandado.DeoMoral = +moral;
+        const clave = (<HTMLInputElement>document.getElementById('DemClave')).value;
+        const folio = (<HTMLInputElement>document.getElementById('DemFolio')).value;
+        const actor = (<HTMLInputElement>document.getElementById('DemClaveActor')).value;
+        const demandado = (<HTMLInputElement>document.getElementById('DemClaveDemandado')).value;
+        const ciudad = (<HTMLInputElement>document.getElementById('DemCiudad')).value;
+        const fecha = (<HTMLInputElement>document.getElementById('DemFecha')).value;
+        const tipo = (<HTMLInputElement>document.getElementById('DemTipo')).value;
+
+        const status = (<HTMLInputElement>document.getElementById('demStatus')).value;
+
+        const nDemanda = new Demanda();
+        nDemanda.DemClave = +clave;
+        nDemanda.DemFolio = folio;
+        nDemanda.DemClaveActor = +actor;
+        nDemanda.DemClaveDemandado = +demandado;
+        nDemanda.DemCiudad = ciudad;
+        nDemanda.DemFecha = fecha;
+        nDemanda.DemTipo = tipo;
+
+        const stat = new StatusDemanda();
+        stat.SDClaveDem = nDemanda.DemClave;
+        stat.SDClaveSta = +status;
+        stat.SDClaveUsr = this.usI;
+
+        const d = new Date();
+        stat.SDTimestamp = d.toISOString();
+        stat.SDFechaCambio = d.toISOString();
 
 
 
 
-        // if (this.action === 'mod') {
-        //     this._Cservice.updateDemandado(nDemandado).subscribe(
-        //         status => {
-        //             if (status.message === 'Success') {
-        //                 this.toastr.success('Demandado Guardado');
-        //                 btn.disabled = false;
-        //                 this.router.navigate(['/demandados']);
-        //             } else {
-        //                 this.toastr.error('Error en el servidor');
-        //             }
-        //         }
 
-        //     );
-        // } else {
-        //     this._Cservice.addDemandado(nDemandado).subscribe(
-        //         status => {
-        //             if (status.message === 'Success') {
-        //                 this.toastr.success('Demandado Guardado');
-        //                 btn.disabled = false;
-        //                 this.router.navigate(['/demandados']);
-        //             } else {
-        //                 this.toastr.error('Error en el servidor');
-        //             }
-        //         }
-        //     );
-        // }
+        if (this.action === 'mod') {
+            this._DService.updateDemanda(nDemanda).subscribe(
+                status => {
+                    if (status.message === 'Success') {
+                        btn.disabled = false;
+                        this._DService.updateStatusD(stat).subscribe(
+                            status => {
+                                if (status.message === 'Success') {
+                                    this._DService.addStatusD(stat).subscribe(
+                                        status => {
+                                            this.toastr.success('Demanda Guardada');
+                                            this.router.navigate(['/demandas']);
+                                            btn.disabled = false;
+                                        }
+                                    );
+                                }
+                            }
+                        );
+
+                    } else {
+                        this.toastr.error('Error en el servidor');
+                    }
+                }
+
+            );
+        } else {
+            this._DService.addDemanda(nDemanda).subscribe(
+                status => {
+                    if (status.message === 'Success') {
+                        this._DService.addStatusD(stat).subscribe(
+                            status => {
+                                if (status.message === 'Success') {
+                                    this.toastr.success('Demanda Guardada');
+                                    this.router.navigate(['/demandas']);
+                                    btn.disabled = false;
+                                }
+                            }
+                        );
+                    } else {
+                        this.toastr.error('Error en el servidor');
+                    }
+                }
+            );
+        }
 
 
     }

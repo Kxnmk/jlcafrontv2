@@ -4,7 +4,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <i class="fa fa-address-book"></i>
-                    <a href="Javascript:void(0)" [routerLink]="['/demandas']"> <== Demandados</a>
+                    <a href="Javascript:void(0)" [routerLink]="['/demandas']"> <== Demandas</a>
                 </li>
             </ol>
         </div>
@@ -39,7 +39,8 @@
                 </span>
             </div>
             <select class="form-control" id="DemClaveActor">
-                <option *ngFor="let actor of actores; let i = index" value="{{i}}" [selected]="actor.ActClave === demanda.DemClaveActor">{{actor.ActNombre}} </option>
+                <option>Selecciona Actor</option>>
+                <option *ngFor="let actor of actores; let i = index" value="{{actor.ActClave}}" [selected]="actor.ActClave === demanda.DemClaveActor">{{actor.ActNombre}} </option>
             </select>
         </div>
 
@@ -49,8 +50,9 @@
                     Demandado
                 </span>
             </div>
-            <select class="form-control" id="DemClaveActor">
-                <option *ngFor="let demandado of demandados; let i = index" value="{{i}}" [selected]="demandado.DeoClave === demanda.DemClaveDemandado">{{demandado.DeoNombre}} </option>
+            <select class="form-control" id="DemClaveDemandado">
+                <option>Selecciona Demandado</option>>
+                <option *ngFor="let demandado of demandados; let i = index" value="{{demandado.DeoClave}}" [selected]="demandado.DeoClave === demanda.DemClaveDemandado">{{demandado.DeoNombre}} </option>
             </select>
         </div>
 
@@ -62,16 +64,17 @@
             </div>
             <input id="DemCiudad" type="text" class="form-control" value="{{demanda.DemCiudad}}" placeholder="Ciudad">
         </div>
+        
+        <!-- Fecha -->
+        
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">
                     Fecha
                 </span>
             </div>
-            <input id="DemFecha" type="text" class="form-control" value="{{demanda.DemFecha | date: 'MM/dd/yyyy'}}" placeholder="Fecha">
+            <input id="DemFecha" type="date" class="form-control" value="{{demanda.DemFecha | date: 'yyyy-MM-dd' : 'UTC'}}" placeholder="Fecha">
         </div>
-        <!-- Fecha -->
-        
 
         <!-- Termina Fecha -->
 
@@ -90,8 +93,12 @@
                     Status
                 </span>
             </div>
-            <input id="demStatus" type="text" class="form-control" value="{{demanda.StaNombre}}" placeholder="Tipo">
+            <select class="form-control" id="demStatus">
+                <option>Selecciona Status</option>>
+                <option *ngFor="let stat of status; let i = index" value="{{stat.StaClave}}" [selected]="stat.StaClave === demanda.StaClave">{{stat.StaNombre}} </option>
+            </select>
         </div>
+
 
 
 

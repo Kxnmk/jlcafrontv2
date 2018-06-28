@@ -25,7 +25,6 @@ export class DemandasComponent implements OnInit {
             data => {
                 if (data.length !== 0) {
                     this.demandas = data;
-
                 } else {
                     this.toastr.error('Error al obtener informacion del servidor');
                 }

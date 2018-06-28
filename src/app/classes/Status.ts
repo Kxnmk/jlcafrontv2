@@ -27,3 +27,18 @@ export class StatusConC {
     StaNombre: string;
 }
 
+export interface StaCatalogo {
+    StaClave: number;
+    StaNombre: string;
+    StaDescripcion: string;
+}
+
+export class StatusDemanda{
+    SDClave?: number;
+    SDClaveDem: number;
+    SDClaveSta: number;
+    SDClaveUsr: number;
+    SDTimestamp?: string;
+    SDFechaCambio?: string;
+    SDComentarios?: string;
+}
