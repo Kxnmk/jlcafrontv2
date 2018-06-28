@@ -141,7 +141,7 @@ export class MusuarioComponent implements OnInit {
         nuser.usrName = usuario;
         nuser.usrPassword = password;
         nuser.usrRol = +rol;
-        nuser.usrRandom = 'U-' + (Math.random() * 100);
+        nuser.usrRandom = 'U-' + (Math.floor(Math.random() * (10000 - 100)) + 100);
 
         const d = new Date();
         nuser.fechaAsignacion = d.toISOString();

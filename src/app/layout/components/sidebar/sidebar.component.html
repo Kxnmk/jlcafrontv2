@@ -32,17 +32,17 @@
                         <i class="fa fa-fw fa-address-book"></i>&nbsp;{{ 'Demandados' | translate }}
                         </a>
                     </li>
-                    <li>
+                    <li *ngIf="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN'">
                         <a [routerLink]="['/mesas']">
                             <i class="fa fa-fw fa-clipboard"></i>&nbsp;{{ 'Mesas' | translate }}
                         </a>
                     </li>
-                    <li ng-if="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' ">
+                    <li *ngIf="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' ">
                         <a [routerLink]="['/usuarios']">
                             <i class="fa fa-fw fa-user"></i>&nbsp;{{ 'Usuarios' | translate }}
                         </a>
                     </li>
-                    <li ng-if="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' ">
+                    <li *ngIf="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' ">
                         <a [routerLink]="['/permisos']">
                             <i class="fa fa-fw fa-key"></i>&nbsp;{{ 'Permisos' | translate }}
                         </a>
@@ -65,15 +65,10 @@
                 </a>
                 <li class="nested" [class.expand]="showMenu === 'profile'">
                     <ul class="submenu">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <span><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
-                            </a>
-                        </li>
 
                         <li>
                             <a [routerLink]="['/login']" (click)="onLoggedout()">
-                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}</span>
+                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Cerrar Sesion' | translate }}</span>
                             </a>
                         </li>
                     </ul>
