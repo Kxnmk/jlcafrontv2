@@ -13,4 +13,4 @@ export let Alert_settings: AlertSettings = {
 };
 
 export const UrlServ = 'http://localhost:3000/api';
-//export const UrlServ = 'https://jlcaback.herokuapp.com/api';
+// export const UrlServ = 'https://jlcaback.herokuapp.com/api';
