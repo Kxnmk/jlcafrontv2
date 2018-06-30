@@ -12,9 +12,6 @@
         <a [routerLink]="['/demandas']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-archive"></i>&nbsp;{{ 'Demandas' | translate }}
         </a>
-        <a [routerLink]="['/documentos']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-files-o"></i>&nbsp;{{ 'Documentos' | translate }}
-        </a>
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('pages')">
                 <span>

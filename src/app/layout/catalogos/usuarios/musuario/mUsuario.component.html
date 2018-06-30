@@ -56,16 +56,16 @@
                 <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Rol
                 </span>
-                <select class="form-control" id="usrRol" (change)="showMesa($event.target.value)">
+                <select class="form-control" id="usrRol" (change)="showMesa($event.target.value)" [disabled]="hd">
                     <option>Selecciona un Rol</option>>
                     <option *ngFor="let rol of roles; let i = index" value="{{rol.RolClave}}" [selected]="rol.RolDescripcion === user.RolDescripcion">{{rol.RolDescripcion}} </option>
                 </select>
                 <div class="input-group-prepend" *ngIf="mesa">
-                    <span class="input-group-text" id="basic-addon1">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
                         Mesa
                     </span>
                 </div>
-                <select class="form-control" id="usrMesa" *ngIf="mesa">
+                <select class="form-control" id="usrMesa" *ngIf="mesa" [disabled]="hd">
                     <option>Selecciona una Mesa</option>>
                     <option *ngFor="let mesa of mesas; let i = index" value="{{mesa.MesClave}}" [selected]="mesa.MesClave === user.ComClaveMesa">{{mesa.MesNombre}} </option>
                 </select>
@@ -75,7 +75,7 @@
         <div class="form-group input-group">
             <div class="col-8 col-sm-8 offset-sm-2 input-group justify-content-center">
                 <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
-                <a class="btn btn-danger text-white" (click)="guardar()" id="btnGuardar"> Borrar </a>
+                <a class="btn btn-danger text-white" (click)="borrar()" id="btnBorrar" *ngIf="hd"> Borrar </a>
             </div> 
         </div>
 

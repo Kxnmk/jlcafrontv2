@@ -13,7 +13,6 @@ const routes: Routes = [
             { path: 'audiencias', loadChildren: './audiencias/audiencias.module#AudienciasModule' },
             { path: 'comisiones', loadChildren: './comisiones/comisiones.module#ComisionesModule' },
             { path: 'demandas', loadChildren: './demandas/demandas.module#DemandasModule' },
-            { path: 'documentos', loadChildren: './documentos/documentos.module#DocumentosModule' },
             { path: 'actores', loadChildren: './catalogos/actores/actores.module#ActoresModule' },
             { path: 'demandados', loadChildren: './catalogos/demandados/demandados.module#DemandadosModule' },
             { path: 'mesas', loadChildren: './catalogos/mesas/mesas.module#MesasModule' },
@@ -32,6 +31,11 @@ const routes: Routes = [
             { path: 'mDemanda', loadChildren: './demandas/mDemanda/mDemanda.module#MDemandaModule' },
 
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
+            { path: 'documentos/:id', loadChildren: './demandas/documentos/documentos.module#DocumentosModule' },
+            { path: 'mDoc/:id', loadChildren: './demandas/documentos/mDoc/mDoc.module#MDocModule' },
+            { path: 'mDoc', loadChildren: './demandas/documentos/mDoc/mDoc.module#MDocModule' },
+
+
         ]
     }
 ];

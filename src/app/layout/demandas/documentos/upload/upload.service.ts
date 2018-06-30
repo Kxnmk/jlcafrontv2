@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { UrlServ } from './../../../global-setting';
+import { UrlServ } from './../../../../global-setting';
 
 const url = UrlServ + '/upload';
 
@@ -44,6 +44,7 @@ export class UploadService {
 
           // Close the progress-stream if we get an answer form the API
           // The upload is complete
+          console.log(event);
           progress.complete();
         }
       });

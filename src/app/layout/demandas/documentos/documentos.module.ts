@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DocumentosRoutingModule } from './documentos-routing.module';
 import { DocumentosComponent } from './documentos.component';
-import { PageHeaderModule } from './../../shared';
+import { PageHeaderModule } from './../../../shared';
 
 import { UploadModule } from './upload/upload.module';
 

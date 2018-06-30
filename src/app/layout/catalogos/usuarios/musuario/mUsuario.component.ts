@@ -36,7 +36,6 @@ export class MusuarioComponent implements OnInit {
 
     ngOnInit() {
 
-        const fclave = <HTMLInputElement>document.getElementById('usrClave');
 
 
         this._Uservice.getRoles().subscribe(
@@ -122,6 +121,22 @@ export class MusuarioComponent implements OnInit {
 
     }
 
+    borrar() {
+        const fclave = <HTMLInputElement>document.getElementById('usrClave');
+        this._Uservice.deleteUsuario(+fclave.value).subscribe(
+            status => {
+                if (status.message === 'Success') {
+                    this.toastr.success('Usuario Borrado');
+                    this.router.navigate(['/usuarios']);
+                } else {
+                    this.toastr.error('Error en el servidor');
+                }
+            }
+
+        );
+
+    }
+
 
     guardar() {
         let clave, mesaS;
@@ -147,7 +162,6 @@ export class MusuarioComponent implements OnInit {
         nuser.fechaAsignacion = d.toISOString();
 
         if (this.hd) {
-            console.log('Esta activa la clave');
             clave = (<HTMLInputElement>document.getElementById('usrClave')).value;
             nuser.usrClave = +clave;
         }

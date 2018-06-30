@@ -1,0 +1,46 @@
+<div [@routerTransition]>
+    <div class="row">
+        <div class="col-xl-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <i class="fa fa-archive"></i>
+                    <a href="Javascript:void(0)" [routerLink]="['/demandas']"> <== Demandas</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Documento </a>
+
+    <!-- Tabla -->
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Fecha Creacion</th>
+                <th scope="col">Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let doc of documentos; let i = index">
+                <th scope="row">{{doc.DocClave}}</th>
+                <td>{{doc.DocNombre}}</td>
+                <td>{{doc.DocDescripcion}}</td>
+                <td>{{doc.DocFechaCreacion | date: 'dd/MM/yyyy' : 'UTC'}}</td>
+
+                <td>
+                    <button type="button" [routerLink]="['/mDoc',i]" class="btn btn-sm btn-primary">Modificar</button>
+                    <button type="button" [routerLink]="['/documentos']" class="btn btn-sm btn-info">Ver</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    <!-- Componente Subida de archivos -->
+    <app-upload></app-upload>
+</div>

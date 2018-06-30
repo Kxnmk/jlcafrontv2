@@ -50,6 +50,9 @@ export class UsuarioServiceService {
     const aux = JSON.stringify(nUsuario);
     return this._http.post<any>(UrlServ + '/usuarios', aux, this.httpOptions);
   }
+  deleteUsuario(i: number): Observable<any> {
+    return this._http.delete<any>(UrlServ + '/usuarios/' + i, this.httpOptions);
+  }
 
  // Catalogo Mesas Disponibles
   getMesas(): Observable<Mesa[]> {
