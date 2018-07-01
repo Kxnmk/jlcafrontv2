@@ -4,7 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { UrlServ } from './../../../../global-setting';
 
-const url = UrlServ + '/upload';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,10 @@ export class UploadService {
 
   constructor(private http: HttpClient) { }
 
-  public upload(files: Set<File>): { [key: string]: Observable<number> } {
+  public upload( files: Set<File> ): { [key: string]: Observable<number> } {
+
+    const url = UrlServ + '/upload';
+
     // this will be the our resulting map
     const status = {};
 

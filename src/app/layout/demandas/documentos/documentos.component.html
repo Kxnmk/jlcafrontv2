@@ -10,7 +10,10 @@
         </div>
     </div>
 
-    <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Documento </a>
+    <!-- Componente Subida de archivos -->
+    <app-upload></app-upload>
+
+    <!-- <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Documento </a> -->
 
     <!-- Tabla -->
     <table class="table">
@@ -32,8 +35,10 @@
                 <td>{{doc.DocFechaCreacion | date: 'dd/MM/yyyy' : 'UTC'}}</td>
 
                 <td>
-                    <button type="button" [routerLink]="['/mDoc',i]" class="btn btn-sm btn-primary">Modificar</button>
-                    <button type="button" [routerLink]="['/documentos']" class="btn btn-sm btn-info">Ver</button>
+                    <div class="btn-group">
+                        <button type="button" [routerLink]="['/mDoc',i]" class="btn btn-sm btn-primary">Modificar</button>
+                        <button type="button" [routerLink]="['/documentos']" class="btn btn-sm btn-info">Ver</button>
+                    </div>
                 </td>
             </tr>
         </tbody>
@@ -41,6 +46,6 @@
 
     
 
-    <!-- Componente Subida de archivos -->
-    <app-upload></app-upload>
+    
+
 </div>

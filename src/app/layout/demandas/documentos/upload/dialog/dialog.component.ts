@@ -14,26 +14,32 @@ export class DialogComponent implements OnInit {
 
   progress;
   canBeClosed = true;
-  primaryButtonText = 'Upload';
+  primaryButtonText = 'Guardar';
   showCancelButton = true;
   uploading = false;
   uploadSuccessful = false;
+  docName = '';
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: UploadService) { }
 
   ngOnInit() {
+    this.canBeClosed = false;
   }
 
   addFiles() {
     this.file.nativeElement.click();
+    this.uploading = true;
   }
 
   onFilesAdded() {
+    const docnm = (<HTMLInputElement>document.getElementById('DocNombre'));
     const files: { [key: string]: File } = this.file.nativeElement.files;
     for (let key in files) {
       // tslint:disable-next-line:radix
       if (!isNaN( parseInt(key) )) {
         this.files.add(files[key]);
+        docnm.value = files[key].name;
+        this.canBeClosed = true;
       }
     }
   }
@@ -60,7 +66,7 @@ export class DialogComponent implements OnInit {
     // Adjust the state variables
 
     // The OK-button should have the text "Finish" now
-    this.primaryButtonText = 'Finish';
+    this.primaryButtonText = 'Terminado';
 
     // The dialog should not be closed while uploading
     this.canBeClosed = false;

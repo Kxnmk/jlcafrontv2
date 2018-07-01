@@ -28,8 +28,10 @@
                 <td>{{demanda.DemTipo}}</td>
                 <td>{{demanda.StaNombre}}</td>
                 <td>
-                    <button type="button" [routerLink]="['/mDemanda',i]" class="btn btn-sm btn-primary">Modificar</button>
-                    <button type="button" [routerLink]="['/documentos', demanda.DemClave]" class="btn btn-sm btn-info">Documentos</button>
+                    <div class="btn-group-vertical btn-group-sm">
+                        <button type="button" [routerLink]="['/mDemanda',i]" class="btn btn-sm btn-primary">Modificar</button>
+                        <button type="button" [routerLink]="['/documentos', demanda.DemClave]" class="btn btn-sm btn-info">Documentos</button>
+                    </div>
                 </td>
             </tr>
         </tbody>

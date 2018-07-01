@@ -23,11 +23,9 @@ export class Documento{
     DocDescripcion?: string;
     DocNotas?: string;
     DocFolioDemanda?: number;
-    DocClaveUsuarioRecibe: string;
     DocClaveUsuarioCreado: string;
     DocFechaCreacion: string;
     DocClaveDemanda: string;
-    DocHash: string;
     DocRuta: string;
     DemandadoC() {
     }

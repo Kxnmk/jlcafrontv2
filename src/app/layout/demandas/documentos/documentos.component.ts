@@ -24,6 +24,7 @@ export class DocumentosComponent implements OnInit {
         this.parms = this.route.params.subscribe(params => {
             try {
                 this.demanda = +params['id'];
+                sessionStorage.setItem('demID', '' + this.demanda);
                 this._DService.getDocumentosByDemanda(this.demanda).subscribe(
                     data => {
                         if (data.length !== 0) {
