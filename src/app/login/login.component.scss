@@ -2,6 +2,7 @@ $topnav-background-color: #222;
 :host {
     display: block;
 }
+
 .login-page {
     position: absolute;
     top: 0;
@@ -16,6 +17,18 @@ $topnav-background-color: #222;
     .col-lg-4 {
         padding: 0;
     }
+    .card {
+        background-color: #F7F7F7;
+        /* just in case there no content*/
+        /* shadows and rounded borders */
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        -moz-box-shadow: 0px 5px 5px #fefe;
+        -webkit-box-shadow: 0px 5px 5px #fefe;
+        box-shadow: 0px 5px 5px #fefe;
+        color: #010101;
+    }
     .input-lg {
         height: 46px;
         padding: 10px 16px;
@@ -27,12 +40,12 @@ $topnav-background-color: #222;
         background: 0 0;
         border: none;
         box-shadow: none;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-        color: #fff;
+        border-bottom: 2px solid #D6DBDF;
+        color: #010101;
         border-radius: 0;
     }
     .input-underline:focus {
-        border-bottom: 2px solid #fff;
+        border-bottom: 2px solid #010101;
         box-shadow: none;
     }
     .rounded-btn {
@@ -58,7 +71,7 @@ $topnav-background-color: #222;
         font-weight: 300;
         margin-top: 20px;
         margin-bottom: 10px;
-        font-size: 36px;
+        font-size: 25px;
         small {
             color: rgba(255, 255, 255, 0.7);
         }
@@ -67,29 +80,33 @@ $topnav-background-color: #222;
     .form-group {
         padding: 8px 0;
         input::-webkit-input-placeholder {
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: #010101 !important;
         }
 
         input:-moz-placeholder {
             /* Firefox 18- */
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: #010101 !important;
         }
 
         input::-moz-placeholder {
             /* Firefox 19+ */
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: #010101 !important;
         }
 
         input:-ms-input-placeholder {
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: #010101 !important;
         }
+        color: #010101;
     }
     .form-content {
         padding: 40px 0;
     }
     .user-avatar {
+        margin: 0 auto;
         -webkit-border-radius: 50%;
         border-radius: 50%;
         border: 2px solid #fff;
     }
 }
+
+

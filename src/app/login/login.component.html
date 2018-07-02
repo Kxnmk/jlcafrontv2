@@ -1,6 +1,8 @@
 <div class="login-page" [@routerTransition]>
+    
     <div class="row justify-content-md-center">
-        <div class="col-md-4">
+        <div class="col-md-4 card">
+            
             <img src="assets/images/logo.png" width="150px" class="user-avatar" />
             <h1>Junta Local de Conciliacion y abritraje Colima</h1>
             <form role="form" >
@@ -13,10 +15,18 @@
                         <input type="password" class="form-control input-underline input-lg" id="password" placeholder="Password">
                     </div>
                 </div>
-                <a class="btn rounded-btn"  (click)="checkLoggin()"> Iniciar Sesion </a>
+                <div class="form-group">
+                    <a class="btn rounded-btn" (click)="checkLoggin()"> Iniciar Sesion </a>
+                    <a class="btn rounded-btn" routerLink="/consultaE">Consulta Externa</a>
+                </div>
+
                 &nbsp;
             </form>
-            <a class="btn rounded-btn" routerLink="/consultaE">Consulta Externa</a>
+            
         </div>
     </div>
+
+    
+
+    
 </div>
