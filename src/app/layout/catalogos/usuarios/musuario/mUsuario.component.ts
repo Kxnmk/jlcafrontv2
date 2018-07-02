@@ -20,7 +20,7 @@ export class MusuarioComponent implements OnInit {
     private parms: any;
     public user: Usuario;
     private index: number;
-    private roles: Rol[];
+    public roles: Rol[];
     private form: FormGroup;
     public mesas: Mesa[];
     public hd = true;

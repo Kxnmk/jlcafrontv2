@@ -3,6 +3,7 @@ import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/c
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { UrlServ } from './../../../../global-setting';
+import { Documento } from '../../../../classes/Documento';
 
 
 
@@ -13,7 +14,7 @@ export class UploadService {
 
   constructor(private http: HttpClient) { }
 
-  public upload( files: Set<File> ): { [key: string]: Observable<number> } {
+  public upload( files: Set<File>, nDoc: Documento ): { [key: string]: Observable<number> } {
 
     const url = UrlServ + '/upload';
 
@@ -24,6 +25,8 @@ export class UploadService {
       // create a new multipart-form for every file
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
+      formData.append('doc', JSON.stringify(nDoc));
+
 
       // create a http-post request and pass the form
       // tell it to report the upload progress

@@ -19,7 +19,7 @@
                 <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Clave
                 </span>
-                <input id="DocClave" type="text" class="form-control" placeholder="Clave Documento" value="{{mesa.MesClave}}" [disabled]=true>
+                <input id="DocClave" type="text" class="form-control" placeholder="Clave Documento" value="{{doc.DocClave}}" [disabled]=true>
             </div>            
         </div>
 
@@ -28,7 +28,7 @@
                 <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Nombre
                 </span>
-                <input id="DocNombre" type="text" class="form-control" value="{{mesa.MesNombre}}" placeholder="Nombre Documento">
+                <input id="DocNombre" type="text" class="form-control" value="{{doc.DocNombre}}" placeholder="Nombre Documento" [disabled]=true>
             </div>
         </div>
 
@@ -37,12 +37,12 @@
                 <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Tipo
                 </span>
-                <input id="DocTipo" type="text" class="form-control" value="{{mesa.MesDescripcion}}" placeholder="Tipo Documento">
+                <input id="DocTipo" type="text" class="form-control" value="{{doc.DocTipo}}" placeholder="Tipo Documento">
 
                 <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Copias
                 </span>
-                <input id="DocTipo" type="text" class="form-control" value="{{mesa.MesDescripcion}}" placeholder="Copias del Documento">
+                <input id="DocCantidadCopias" type="text" class="form-control" value="{{doc.DocCantidadCopias}}" placeholder="Copias del Documento">
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                 <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Descripción
                 </span>
-                <input id="DocDesc" type="text" class="form-control" value="{{mesa.MesNombre}}" placeholder="Descripcion del Documento">
+                <input id="DocDescripcion" type="text" class="form-control" value="{{doc.DocDescripcion}}" placeholder="Descripcion del Documento">
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                 <span class="input-group-text bg-primary text-white" id="basic-addon1">
                     Notas
                 </span>
-                <textarea cols="50" rows="5" id="DocNotas" class="form-control" placeholder="Notas del Documento" maxlength="500"></textarea>
+                <textarea cols="50" rows="5" id="DocNotas" class="form-control" value={{doc.DocNotas}} placeholder="Notas del Documento" maxlength="500"></textarea>
             </div>
         </div>
 

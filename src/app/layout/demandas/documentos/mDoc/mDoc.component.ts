@@ -12,6 +12,8 @@ import { style } from '@angular/animations';
 
 import { Mesa, Mesac } from '../../../../classes/mesa';
 import { Location } from '@angular/common';
+import { DocumentoC, DocumentoCo, Documento } from '../../../../classes/Documento';
+import { DocumentosService } from '../../../../shared/services/documentos.service';
 
 
 @Component({
@@ -22,20 +24,20 @@ import { Location } from '@angular/common';
 })
 export class MDocComponent implements OnInit {
     private parms: any;
-    public mesa: Mesa;
+    public doc: DocumentoC;
     private index: number;
     private action = 'creacion';
     private nextId: number;
     clave;
     previousUrl: string;
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
-        private router: Router, private _Cservice: CatalogosServiceService, private _loc: Location) {
-            this.mesa = new Mesac();
+        private router: Router, private _Dservice: DocumentosService, private _loc: Location) {
+            this.doc = new DocumentoCo();
         }
 
     ngOnInit() {
 
-        const fclave = <HTMLInputElement>document.getElementById('MesClave');
+        const fclave = <HTMLInputElement>document.getElementById('fClave');
         this.parms = this.route.params.subscribe(params => {
             try {
                 this.index = +params['id'];
@@ -45,12 +47,15 @@ export class MDocComponent implements OnInit {
 
                     this.action = 'mod';
 
+                    console.log();
 
-                    this._Cservice.getMesas().subscribe(
+                    const demid = +sessionStorage.getItem('demID');
+                    this._Dservice.getDocumentosByDemanda(demid).subscribe(
                         data => {
                             if (data.length !== 0) {
-                                this._Cservice.setMesas(data);
-                                this.mesa = this._Cservice.getMesaById(this.index);
+                                this._Dservice.setDocumentos(data);
+                                this.doc = this._Dservice.getDocumentoByID(this.index);
+                                console.log(this.doc);
                             } else {
                                 this.toastr.error('Error al obtener informacion');
 
@@ -62,20 +67,6 @@ export class MDocComponent implements OnInit {
 
                         });
                 } else {
-
-                    this._Cservice.getMesas().subscribe(
-                        data => {
-                            if (data.length !== 0) {
-
-                                fclave.value = '' + (data.length + 1);
-                            }
-                        },
-                        err => {
-                            console.log(err);
-                        });
-
-
-
 
 
                 }
@@ -94,43 +85,34 @@ export class MDocComponent implements OnInit {
     guardar() {
         const btn = <HTMLInputElement>document.getElementById('btnGuardar');
         btn.style.display = 'none';
+        const btnv = <HTMLInputElement>document.getElementById('btnVer');
+        btnv.style.display = 'none';
 
-        const clave = (<HTMLInputElement>document.getElementById('MesClave')).value;
-        const nombre = (<HTMLInputElement>document.getElementById('MesNombre')).value;
-        const descripcion = (<HTMLInputElement>document.getElementById('MesDescripcion')).value;
-        const nMesa = new Mesac();
-        nMesa.MesClave = +clave;
-        nMesa.MesNombre = nombre;
-        nMesa.MesDescripcion = descripcion;
+        const clave = (<HTMLInputElement>document.getElementById('DocClave')).value;
+        const tipo = (<HTMLInputElement>document.getElementById('DocTipo')).value;
+        const copias = (<HTMLInputElement>document.getElementById('DocCantidadCopias')).value;
+        const desc = (<HTMLInputElement>document.getElementById('DocDescripcion')).value;
+        const notas = (<HTMLInputElement>document.getElementById('DocNotas')).value;
 
+        const nDoc = new Documento();
+        nDoc.DocClave = +clave;
+        nDoc.DocTipo = tipo;
+        nDoc.DocCantidadCopias = copias;
+        nDoc.DocDescripcion = desc;
+        nDoc.DocNotas = notas;
 
-        if (this.action === 'mod') {
-            this._Cservice.updateMesa(nMesa).subscribe(
+        this._Dservice.updateDocumento(nDoc).subscribe(
                 status => {
                     if (status.message === 'Success') {
-                        this.toastr.success('Mesa Guardada');
+                        this.toastr.success('Docuemento Guardado');
                         btn.disabled = false;
-                        this.router.navigate(['/mesas']);
+                        this.lastPage();
                     } else {
                         this.toastr.error('Error en el servidor');
                     }
                 }
 
             );
-        } else {
-            this._Cservice.addMesa(nMesa).subscribe(
-                status => {
-                    if (status.message === 'Success') {
-                        this.toastr.success('Mesa Guardada');
-                        btn.disabled = false;
-                        this.router.navigate(['/mesas']);
-                    } else {
-                        this.toastr.error('Error en el servidor');
-                    }
-                }
-            );
-        }
-
 
     }
 

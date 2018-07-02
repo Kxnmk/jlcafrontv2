@@ -7,7 +7,7 @@ import { DemandaCon, Demanda, DemandaI } from '../../classes/Demanda';
 import { Actor } from '../../classes/Actor';
 import { Demandado } from '../../classes/Demandado';
 import { StaCatalogo, Status, StatusDemanda } from '../../classes/Status';
-import { DocumentoC } from '../../classes/Documento';
+import { DocumentoC, Documento } from '../../classes/Documento';
 
 @Injectable({
   providedIn: 'root'
@@ -31,52 +31,12 @@ export class DocumentosService {
     this.documentos = docs;
   }
 
-  // // Demandas
+  getDocumentoByID(i: number): DocumentoC {
+    return this.documentos[i];
+  }
 
-  // getDemadnasByRol(i: number): Observable<DemandaCon[]> {
-  //   return this._http.get<DemandaCon[]>(UrlServ + '/demandas/' + i);
-  // }
-  // setDemandas(demandas: DemandaCon[]) {
-  //   this.demandas = demandas;
-  // }
-  // getDemandaById(i: number): DemandaCon {
-  //   return this.demandas[i];
-  // }
-  // countDemandas(): Observable<DemandaI[]> {
-  //   return this._http.get<DemandaI[]>(UrlServ + '/demandas');
-  // }
-
-  // updateDemanda(nDemanda: Demanda): Observable<any> {
-  //   const aux = JSON.stringify(nDemanda);
-  //   return this._http.put<any>(UrlServ + '/demandas/' + nDemanda.DemClave, aux, this.httpOptions);
-  // }
-  // addDemanda(nDemanda: Demanda): Observable<any> {
-  //   const aux = JSON.stringify(nDemanda);
-  //   return this._http.post<any>(UrlServ + '/demandas', aux, this.httpOptions);
-  // }
-
-  // // Actores Catalogo
-  // getActores(): Observable<Actor[]> {
-  //   return this._http.get<Actor[]>(UrlServ + '/actores');
-  // }
-
-  // // Demandados Catalogo
-  // getDemandados(): Observable<Demandado[]> {
-  //   return this._http.get<Demandado[]>(UrlServ + '/demandados');
-  // }
-
-  // // Estatus status Catalogo
-  // getStatus(): Observable<StaCatalogo[]> {
-  //   return this._http.get<StaCatalogo[]>(UrlServ + '/status');
-  // }
-
-  // // Update Status
-  // updateStatusD(nStatus: StatusDemanda): Observable<any> {
-  //   const aux = JSON.stringify(nStatus);
-  //   return this._http.put<any>(UrlServ + '/statusD/' + nStatus.SDClaveDem, aux, this.httpOptions);
-  // }
-  // addStatusD(nStatus: StatusDemanda): Observable<any> {
-  //   const aux = JSON.stringify(nStatus);
-  //   return this._http.post<any>(UrlServ + '/statusD', aux, this.httpOptions);
-  // }
+  updateDocumento(nDoc: Documento): Observable<any> {
+    const aux = JSON.stringify(nDoc);
+    return this._http.put<any>(UrlServ + '/documentos/' + nDoc.DocClave, aux, this.httpOptions);
+  }
 }
