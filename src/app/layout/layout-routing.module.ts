@@ -36,6 +36,7 @@ const routes: Routes = [
             { path: 'mDoc', loadChildren: './demandas/documentos/mDoc/mDoc.module#MDocModule' },
             { path: 'mAud/:id', loadChildren: './audiencias/mAud/mAud.module#MAudModule'},
             { path: 'mAud', loadChildren: './audiencias/mAud/mAud.module#MAudModule' },
+            { path: 'mCom/:id', loadChildren: './comisiones/mCom/mCom.module#MComModule' },
 
 
         ]

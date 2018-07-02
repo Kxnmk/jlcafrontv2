@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ComisionC } from '../../classes/Comision';
+import { ComisionesService } from '../../shared/services/comisiones.service';
+
+
 @Component({
     selector: 'app-comisiones',
     templateUrl: './comisiones.component.html',
@@ -8,7 +14,27 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class ComisionesComponent implements OnInit {
-    constructor() {}
+    comisiones: ComisionC[];
 
-    ngOnInit() {}
+    constructor(private _Cservice: ComisionesService, private toastr: ToastrService, private router: Router) {
+    }
+
+    ngOnInit() {
+        this._Cservice.getComisiones().subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.comisiones = data;
+
+                } else {
+                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+            });
+    }
+    agregar() {
+        this.router.navigate(['/mCom']);
+    }
 }

@@ -1,4 +1,29 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Comisiones'" [icon]="'fa-slideshare'"></app-page-header>
-    <p>Hola desde Comisiones</p>
+    
+    <!-- Tabla -->
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre Usuario</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Fecha de Asignacion</th>
+                <th scope="col">Mesa</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let comision of comisiones; let i = index">
+                <th scope="row">{{comision.ComClave}}</th>
+                <th>{{comision.usrNombre}}</th>
+                <td>{{comision.RolDescripcion}}</td>
+                <td>{{comision.ComFechaAsignacion | date: 'dd/MM/yyyy' : 'UTC'}}</td>
+                <td>{{comision.MesNombre}}</td>
+                <td>
+                    <button type="button" [routerLink]="['/mCom',i]" class="btn btn-sm btn-success">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

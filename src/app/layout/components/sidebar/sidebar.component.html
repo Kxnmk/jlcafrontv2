@@ -6,7 +6,7 @@
         <a [routerLink]="['/audiencias']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-users"></i>&nbsp;{{ 'Audiencias' | translate }}
         </a>
-        <a ng-if="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' " [routerLink]="['/comisiones']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a *ngIf="usuarioRol === 'PLENO' || usuarioRol === 'ADMIN' " [routerLink]="['/comisiones']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-slideshare"></i>&nbsp;{{ 'Comisiones' | translate }}
         </a>
         <a [routerLink]="['/demandas']" [routerLinkActive]="['router-link-active']" class="list-group-item">
@@ -29,17 +29,17 @@
                         <i class="fa fa-fw fa-address-book"></i>&nbsp;{{ 'Demandados' | translate }}
                         </a>
                     </li>
-                    <li *ngIf="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN'">
+                    <li *ngIf="usuarioRol === 'PLENO' || usuarioRol === 'ADMIN'">
                         <a [routerLink]="['/mesas']">
                             <i class="fa fa-fw fa-clipboard"></i>&nbsp;{{ 'Mesas' | translate }}
                         </a>
                     </li>
-                    <li *ngIf="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' ">
+                    <li *ngIf="usuarioRol === 'PLENO' || usuarioRol === 'ADMIN' ">
                         <a [routerLink]="['/usuarios']">
                             <i class="fa fa-fw fa-user"></i>&nbsp;{{ 'Usuarios' | translate }}
                         </a>
                     </li>
-                    <li *ngIf="usuarioRol == 'PLENO' || usuarioRol == 'ADMIN' ">
+                    <li *ngIf="usuarioRol === 'PLENO' || usuarioRol === 'ADMIN' ">
                         <a [routerLink]="['/permisos']">
                             <i class="fa fa-fw fa-key"></i>&nbsp;{{ 'Permisos' | translate }}
                         </a>

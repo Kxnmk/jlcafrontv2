@@ -1,0 +1,99 @@
+<div [@routerTransition]>
+    <div class="row">
+        <div class="col-xl-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <i class="fa fa-slideshare"></i>
+                    <a href="Javascript:void(0)" [routerLink]="['/comisiones']"> <== Comisiones</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+    
+    <form role="form">
+    
+        <div class="form-group input-group" id='fClave' *ngIf="hd">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                    Clave
+                </span>
+                <input id="ComClave" type="text" class="form-control" placeholder="Clave de Comision" value="{{comision.ComClave}}" [disabled]=true>
+            </div>            
+        </div>
+
+
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                    Usuario
+                </span>
+                <select class="form-control" id="ComClaveUsuario">
+                    <option *ngFor="let usuario of usuarios; let i = index" value="{{usuario.usrClave}}" [selected]="usuario.usrClave === comision.ComClaveUsuario">{{ usuario.usrNombre}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                    Rol
+                </span>
+                <select class="form-control" id="ComClaveRol" (change)="showMesa($event.target.value)">
+
+                    <option *ngFor="let rol of roles; let i = index" value="{{rol.RolClave}}" [selected]="rol.RolClave === comision.ComClaveRol">{{rol.RolDescripcion}} </option>
+                </select>
+                <div class="input-group-prepend" *ngIf="mesa">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Mesa
+                    </span>
+                </div>
+                <select class="form-control" id="usrMesa" *ngIf="mesa">
+                    <option>Selecciona una Mesa</option>>
+                    <option *ngFor="let mesa of mesas; let i = index" value="{{mesa.MesClave}}" [selected]="mesa.MesClave === comision.ComClaveMesa">{{mesa.MesNombre}} </option>
+                </select>
+            </div>
+        
+        </div>
+
+        <!-- Fecha -->
+        
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                    Fecha Asignacion
+                </span>
+                <input id="ComFechaAsignacion" type="date" class="form-control" value="{{comision.ComFechaAsignacion | date: 'yyyy-MM-dd' : 'UTC'}}" placeholder="Fecha" [disabled]=true>
+
+            </div>
+        </div>
+        
+        <!-- Termina Fecha -->
+
+        <!-- Hora -->
+        
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                
+            </div>
+        </div>
+        
+        <!-- Termina Hora -->
+
+
+
+
+        <div class="form-group input-group">
+            <div class="col-8 col-sm-8 offset-sm-2 input-group justify-content-center">
+                <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
+            </div>
+        </div>
+
+    
+        
+    
+    </form>
+
+    
+</div>
