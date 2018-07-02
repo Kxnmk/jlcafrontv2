@@ -1,4 +1,30 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Audiencias'" [icon]="'fa-users'"></app-page-header>
-    <p>Hola desde Audiencias</p>
+    <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Audiencia </a>
+    
+    <!-- Tabla -->
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Folio Demanda</th>
+                <th scope="col">Mesa</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let audiencia of audiencias; let i = index">
+                <th scope="row">{{audiencia.AudClave}}</th>
+                <td>{{audiencia.DemFolio}}</td>
+                <td>{{audiencia.MesNombre}}</td>
+                <td>{{audiencia.AudFecha | date: 'dd/MM/yyyy' : 'UTC'}}</td>
+                <td>{{audiencia.AudHora | date: 'h:mm a' : 'UTC'}}</td>
+                <td>
+                    <button type="button" [routerLink]="['/mAud',i]" class="btn btn-sm btn-success">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

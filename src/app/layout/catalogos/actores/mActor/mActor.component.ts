@@ -63,7 +63,6 @@ export class MActorComponent implements OnInit {
                     this._Cservice.getActores().subscribe(
                         data => {
                             if (data.length !== 0) {
-                                console.log(data.length);
                                 fclave.value = '' + (data.length + 1);
                             }
                         },
