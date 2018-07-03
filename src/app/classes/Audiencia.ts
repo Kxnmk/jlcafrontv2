@@ -7,6 +7,7 @@ export interface AudienciaC {
     AudNotas: string;
     MesNombre: string;
     DemFolio: string;
+    DemTipo?: string;
 }
 export class AudienciaCo {
     AudClave?: number;
@@ -17,6 +18,7 @@ export class AudienciaCo {
     AudNotas: string;
     MesNombre: string;
     DemFolio: string;
+    DemTipo: string;
 }
 
 export class Audiencia {

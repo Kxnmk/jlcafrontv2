@@ -5,6 +5,8 @@ import { UrlServ } from './../../global-setting';
 import { Observable } from 'rxjs';
 import { Mesa, Mesac } from '../../classes/mesa';
 import { DemandaCon } from '../../classes/Demanda';
+import { CalendarEvent } from 'angular-calendar';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,8 @@ export class AudienciaService {
   countAudiencias() {
     return this._http.get<AudienciaC[]>(UrlServ + '/audiencias');
   }
+
+  
   setAudiencias(audiencias: AudienciaC[]) {
     this.audiencias = audiencias;
   }
