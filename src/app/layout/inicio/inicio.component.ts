@@ -1,6 +1,6 @@
 import { routerTransition } from '../../router.animations';
 
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, LOCALE_ID } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { CalendarEvent } from 'angular-calendar';
@@ -23,11 +23,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AudienciaC } from '../../classes/Audiencia';
 
 
-interface Film {
-    id: number;
-    title: string;
-    release_date: string;
-}
+
 
 const colors: any = {
     red: {
@@ -52,6 +48,7 @@ const colors: any = {
     animations: [routerTransition()]
 })
 export class InicioComponent implements OnInit {
+    locale = 'es-MX';
     view = 'month';
 
     viewDate: Date = new Date();
@@ -67,16 +64,25 @@ export class InicioComponent implements OnInit {
     }
 
     fetchEvents(): void {
+
         this.events$ = this._http.get<AudienciaC[]>(UrlServ + '/audiencias').pipe(
             map(response => {
                 const a = new Array<CalendarEvent<{aud: AudienciaC}>>();
                 console.log(response);
                 for (const aud of response) {
+                    const d1 = new Date(aud.AudFecha);
+                    const t1 = new Date(aud.AudHora);
+                    const df = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(),
+                        t1.getUTCHours(), t1.getUTCMinutes(), t1.getUTCMilliseconds());
+
+
+
                     switch (aud.DemTipo) {
                         case 'Extraordinaria': {
                             const nE = {
-                                title: 'Folio: ' + aud.DemFolio,
-                                start: new Date(aud.AudFecha),
+                                title: 'Folio: ' + aud.DemFolio + ' Mesa: ' + aud.MesNombre + ' Hora: ' +
+                                    df.getHours() + ':' + df.getMinutes(),
+                                start: df,
                                 color: colors.red,
                             };
                             a.push(nE);
@@ -84,8 +90,9 @@ export class InicioComponent implements OnInit {
                         }
                         default: {
                             const nE = {
-                                title: 'Folio: ' + aud.DemFolio,
-                                start: new Date(aud.AudFecha),
+                                title: 'Folio: ' + aud.DemFolio + ' Mesa: ' + aud.MesNombre + ' Hora: ' +
+                                df.getHours() + ':' + df.getMinutes(),
+                                start: df,
                                 color: colors.blue,
                             };
                             a.push(nE);
@@ -100,12 +107,39 @@ export class InicioComponent implements OnInit {
 
     }
 
+    // calcTime(date) {
+    //     console.log(date);
+    //     console.log(date.toISOString());
+
+    //     const lcl = new Date();
+    //     console.log(lcl);
+    //     console.log(lcl.toISOString());
+
+
+    //     // create Date object for current location
+    //     // const d =  date;
+    //     // const lcl = new Date();
+
+    //     // convert to msec
+    //     // add local time zone offset
+    //     // get UTC time in msec
+    //     //const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+    //     // create new Date object for different city
+    //     // using supplied offset
+    //     //const nd = new Date(utc + (3600000 * lcl.getTimezoneOffset()));
+    //     //const nd = new Date(utc);
+
+    //     // return time as a string
+    //     //console.log('The local is ' + nd);
+    // }
+
     dayClicked({
         date,
         events
     }: {
             date: Date;
-            events: Array<CalendarEvent<{ film: Film }>>;
+            events: Array<CalendarEvent<{ aud: AudienciaC }>>;
         }): void {
         if (isSameMonth(date, this.viewDate)) {
             if (
@@ -120,10 +154,27 @@ export class InicioComponent implements OnInit {
         }
     }
 
-    eventClicked(event: CalendarEvent<{ film: Film }>): void {
-        window.open(
-            `https://www.themoviedb.org/movie/${event.meta.film.id}`,
-            '_blank'
-        );
+    setView(v) {
+        switch (v) {
+            case 'month': {
+                this.view = 'month';
+                break;
+            }
+            case 'week': {
+                this.view = 'week';
+                break;
+            }
+            case 'day': {
+                this.view = 'day';
+                break;
+            }
+            default: {
+                this.view = 'month';
+            }
+        }
+    }
+
+    eventClicked(event: CalendarEvent<{ aud: AudienciaC }>): void {
+
     }
 }
