@@ -27,6 +27,7 @@ export class AudienciaService {
   getAudienciasByRol(i: number): Observable<AudienciaC[]> {
     return this._http.get<AudienciaC[]>(UrlServ + '/audiencias/' + i);
   }
+
   countAudiencias() {
     return this._http.get<AudienciaC[]>(UrlServ + '/audiencias');
   }
