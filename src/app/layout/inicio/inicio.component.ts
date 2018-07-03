@@ -3,7 +3,6 @@ import { routerTransition } from '../../router.animations';
 import { Component, ChangeDetectionStrategy, OnInit, LOCALE_ID } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { CalendarEvent } from 'angular-calendar';
 import {
     isSameMonth,
     isSameDay,
@@ -21,6 +20,8 @@ import { AudienciaService } from '../../shared/services/audiencia.service';
 
 import { ToastrService } from 'ngx-toastr';
 import { AudienciaC } from '../../classes/Audiencia';
+
+import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
 
 
 
@@ -172,6 +173,17 @@ export class InicioComponent implements OnInit {
                 this.view = 'month';
             }
         }
+    }
+
+    beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+        body.forEach(cell => {
+            const groups: any = {};
+            cell.events.forEach((event: CalendarEvent<{ type: string }>) => {
+                groups[event.meta.type] = groups[event.meta.type] || [];
+                groups[event.meta.type].push(event);
+            });
+            cell['eventGroups'] = Object.entries(groups);
+        });
     }
 
     eventClicked(event: CalendarEvent<{ aud: AudienciaC }>): void {

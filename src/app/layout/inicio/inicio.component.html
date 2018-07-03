@@ -44,8 +44,17 @@
                 </mwl-calendar-month-view>
                 <mwl-calendar-week-view *ngSwitchCase="'week'" [locale]="locale" [viewDate]="viewDate" [events]="events" (eventClicked)="eventClicked($event.event)">
                 </mwl-calendar-week-view>
-                <mwl-calendar-day-view *ngSwitchCase="'day'" [locale]="locale" [viewDate]="viewDate" [events]="events" (eventClicked)="eventClicked($event.event)">
-                </mwl-calendar-day-view>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <mwl-calendar-day-view *ngSwitchCase="'day'" [eventWidth]="200" [dayStartHour]="0" [dayEndHour]="11" [locale]="locale" [viewDate]="viewDate" [events]="events" (eventClicked)="eventClicked($event.event)">
+                        </mwl-calendar-day-view>
+                    </div>
+                    <div class="col-sm-6">
+                        <mwl-calendar-day-view *ngSwitchCase="'day'" [eventWidth]="200" [dayStartHour]="12" [locale]="locale" [viewDate]="viewDate" [events]="events" (eventClicked)="eventClicked($event.event)">
+                        </mwl-calendar-day-view>
+                    </div>
+                </div>
+                
             </div>
         </div>
 
