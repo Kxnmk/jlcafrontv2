@@ -13,128 +13,135 @@
     <p class="h3 text-center">{{title}}</p>
     <hr/>
 
-
+    <div class="row">
+        <div class="col-sm-10">
     
-    <form role="form">
     
-        <div class="form-group input-group" id='fClave'>
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend" *ngIf="hd">
-                <span class="input-group-text bg-primary text-white" id="basic-addon1">
-                    Clave
-                </span>
-                <input id="DemClave" type="text" class="form-control" placeholder="Clave de Demanda" value="{{demanda.DemClave}}" [disabled]=true>
-            </div>
-        </div>
-
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
-                <span class="input-group-text bg-primary text-white" id="basic-addon1">
-                    Folio
-                </span>
-                <input id="DemFolio" type="text" class="form-control" value="{{demanda.DemFolio}}" placeholder="Folio Demanda" maxlength="10" [disabled]="hd">
-            </div>
-        </div>
-
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
-                <span class="input-group-text bg-primary text-white" id="basic-addon1">
-                    Actor
-                </span>
-                <select class="form-control" id="DemClaveActor">
-                    <option>Selecciona Actor</option>>
-                    <option *ngFor="let actor of actores; let i = index" value="{{actor.ActClave}}" [selected]="actor.ActClave === demanda.DemClaveActor">{{actor.ActNombre}} </option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
-                <span class="input-group-text bg-primary text-white" id="basic-addon1">
-                    Demandado
-                </span>
-                <select class="form-control" id="DemClaveDemandado">
-                    <option>Selecciona Demandado</option>>
-                    <option *ngFor="let demandado of demandados; let i = index" value="{{demandado.DeoClave}}" [selected]="demandado.DeoClave === demanda.DemClaveDemandado">{{demandado.DeoNombre}} </option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
-                <span class="input-group-text bg-primary text-white" id="basic-addon1">
-                    Ciudad
-                </span>
-                <input id="DemCiudad" type="text" class="form-control" value="{{demanda.DemCiudad}}" placeholder="Ciudad">
-            </div>
-        </div>
+        <form role="form">
         
-        <!-- Fecha -->
+            <div class="form-group input-group" id='fClave'>
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend" *ngIf="hd">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Clave
+                    </span>
+                    <input id="DemClave" type="text" class="form-control" placeholder="Clave de Demanda" value="{{demanda.DemClave}}" [disabled]=true>
+                </div>
+            </div>
+
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Folio
+                    </span>
+                    <input id="DemFolio" type="text" class="form-control" value="{{demanda.DemFolio}}" placeholder="Folio Demanda" maxlength="10" [disabled]="hd">
+                </div>
+            </div>
+
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Actor
+                    </span>
+                    <select class="form-control" id="DemClaveActor">
+                        <option>Selecciona Actor</option>>
+                        <option *ngFor="let actor of actores; let i = index" value="{{actor.ActClave}}" [selected]="actor.ActClave === demanda.DemClaveActor">{{actor.ActNombre}} </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Demandado
+                    </span>
+                    <select class="form-control" id="DemClaveDemandado">
+                        <option>Selecciona Demandado</option>>
+                        <option *ngFor="let demandado of demandados; let i = index" value="{{demandado.DeoClave}}" [selected]="demandado.DeoClave === demanda.DemClaveDemandado">{{demandado.DeoNombre}} </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Ciudad
+                    </span>
+                    <input id="DemCiudad" type="text" class="form-control" value="{{demanda.DemCiudad}}" placeholder="Ciudad">
+                </div>
+            </div>
+            
+            <!-- Fecha -->
+            
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Fecha
+                    </span>
+                    <input id="DemFecha" type="date" class="form-control" value="{{demanda.DemFecha | date: 'yyyy-MM-dd' : 'UTC'}}" placeholder="Fecha">
+                </div>
+            </div>
+
+            <!-- Termina Fecha -->
+
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Tipo
+                    </span>
+                    <select class="form-control" id="DemTipo">
+                        <option>Selecciona Tipo</option>>
+                        <option value="Ordinaria" [selected]="demanda.DemTipo === 'Ordinaria'">Ordinaria</option>>
+                        <option value="Extraordinaria" [selected]="demanda.DemTipo === 'Extraordinaria'">Extraordinaria</option>>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1">
+                        Status
+                    </span>
+                    <select class="form-control" id="demStatus" (change)="showProy($event.target.value)">
+                        <option>Selecciona Status</option>>
+                        <option *ngFor="let stat of status; let i = index" value="{{stat.StaClave}}" [selected]="stat.StaClave === demanda.StaClave">{{stat.StaNombre}} </option>
+                    </select>
+                    <span class="input-group-text bg-primary text-white" id="basic-addon1" *ngIf="pro">
+                        Proyectista
+                    </span>
+                    <select class="form-control" id="proyDem" [disabled]="mpro" *ngIf="pro">
+                        <option>Selecciona un Proyectista</option>>
+                        <option *ngFor="let proy of proyec; let i = index" value="{{proy.ProClave}}" [selected]="proy.ProClave === demanda.DemClaveProyectista">{{proy.ProNombre}} </option>
+                    </select>
+                
+                </div>
+            
+            </div>
+
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
+                    <textarea cols="50" rows="4" id="statusComentarios" value="{{demanda.SDComentarios}}" class="form-control" placeholder="Comentarios Demanda"
+                        maxlength="500"></textarea>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group input-group">
+                <div class="col-8 col-sm-8 offset-sm-2 input-group justify-content-center">
+                    <a class="btn btn-success text-white btn-block" (click)="guardar()" id="btnGuardar"> Guardar </a>
+                </div>
+            </div>
+
         
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
-                <span class="input-group-text bg-primary text-white" id="basic-addon1">
-                    Fecha
-                </span>
-                <input id="DemFecha" type="date" class="form-control" value="{{demanda.DemFecha | date: 'yyyy-MM-dd' : 'UTC'}}" placeholder="Fecha">
-            </div>
-        </div>
-
-        <!-- Termina Fecha -->
-
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
-                <span class="input-group-text bg-primary text-white" id="basic-addon1">
-                    Tipo
-                </span>
-                <select class="form-control" id="DemTipo">
-                    <option>Selecciona Tipo</option>>
-                    <option value="Ordinaria" [selected]="demanda.DemTipo === 'Ordinaria'">Ordinaria</option>>
-                    <option value="Extraordinaria" [selected]="demanda.DemTipo === 'Extraordinaria'">Extraordinaria</option>>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
-                <span class="input-group-text bg-primary text-white" id="basic-addon1">
-                    Status
-                </span>
-                <select class="form-control" id="demStatus" (change)="showProy($event.target.value)">
-                    <option>Selecciona Status</option>>
-                    <option *ngFor="let stat of status; let i = index" value="{{stat.StaClave}}" [selected]="stat.StaClave === demanda.StaClave">{{stat.StaNombre}} </option>
-                </select>
-                <span class="input-group-text bg-primary text-white" id="basic-addon1" *ngIf="pro">
-                    Proyectista
-                </span>
-                <select class="form-control" id="proyDem" [disabled]="mpro" *ngIf="pro">
-                    <option>Selecciona un Proyectista</option>>
-                    <option *ngFor="let proy of proyec; let i = index" value="{{proy.ProClave}}" [selected]="proy.ProClave === demanda.DemClaveProyectista">{{proy.ProNombre}} </option>
-                </select>
-               
-            </div>
-           
-        </div>
-
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group-prepend">
-                <textarea cols="50" rows="4" id="statusComentarios" value="{{demanda.SDComentarios}}" class="form-control" placeholder="Comentarios Demanda"
-                    maxlength="500"></textarea>
-            </div>
-        </div>
-
-
-
-
-        <div class="form-group input-group">
-            <div class="col-8 col-sm-8 offset-sm-2 input-group justify-content-center">
-                <a class="btn btn-success text-white" (click)="guardar()" id="btnGuardar"> Guardar </a>
-            </div>
-        </div>
-
-    
+            
         
-    
-    </form>
+        </form>
+    </div>
+    <div class="col-sm-1">
+        <a class="btn btn-secondary text-white btn-lg" [routerLink]="['/histo',demanda.DemClave]" id="btnGuardar"> Ver Historico </a>
+    </div>
+
 
     
 </div>

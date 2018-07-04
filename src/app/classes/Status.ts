@@ -42,3 +42,10 @@ export class StatusDemanda{
     SDFechaCambio?: string;
     SDComentarios?: string;
 }
+
+export interface StatusTime{
+    SDClaveDem: number;
+    StaNombre: string;
+    SDTimestamp: string;
+    StaDescripcion: string;
+}

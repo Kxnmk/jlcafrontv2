@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { UrlServ } from './../../global-setting';
 import { HttpHeaders } from '@angular/common/http';
 import { Actor } from '../../classes/Actor';
-import { Status, StatusCon } from '../../classes/Status';
+import { Status, StatusCon, StatusTime } from '../../classes/Status';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -108,5 +108,10 @@ export class CatalogosServiceService {
   }
   storeStatus(st: Status): Observable<any> {
     return this._http.put<any>(UrlServ + '/statusRol/' + st.SRClaveRol, st, this.httpOptions);
+  }
+
+  // Status Demanda
+  getStatusDemanda(i: number): Observable<StatusTime[]> {
+    return this._http.get<StatusTime[]>(UrlServ + '/statusD/' + i);
   }
 }

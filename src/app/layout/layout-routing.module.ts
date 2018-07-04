@@ -37,6 +37,7 @@ const routes: Routes = [
             { path: 'mAud/:id', loadChildren: './audiencias/mAud/mAud.module#MAudModule'},
             { path: 'mAud', loadChildren: './audiencias/mAud/mAud.module#MAudModule' },
             { path: 'mCom/:id', loadChildren: './comisiones/mCom/mCom.module#MComModule' },
+            { path: 'histo/:id', loadChildren: './demandas/timeline/tLine.module#TLineModule' },
 
 
         ]
