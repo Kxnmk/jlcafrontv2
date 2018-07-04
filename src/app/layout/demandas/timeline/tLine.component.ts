@@ -42,7 +42,6 @@ export class TLineComponent implements OnInit {
                         data => {
                             if (data.length !== 0) {
                                 this.status = data;
-                                console.log(data);
                             } else {
                                 this.toastr.error('Error al obtener informacion');
 
