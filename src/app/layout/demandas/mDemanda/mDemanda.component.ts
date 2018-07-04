@@ -43,6 +43,7 @@ export class MDemandaComponent implements OnInit {
     private comSt = '';
     title = 'Agregar Demanda';
 
+
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _DService: DemandasService) {
             this.demanda = new DemandaConC();

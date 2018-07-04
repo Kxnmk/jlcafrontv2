@@ -15,6 +15,7 @@ export class DocumentosComponent implements OnInit {
     documentos: DocumentoC[];
     demanda: number;
     private parms: any;
+    public search: string;
 
     constructor(private toastr: ToastrService, private router: Router,
         private _DService: DocumentosService, private route: ActivatedRoute) {}

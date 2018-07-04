@@ -13,6 +13,7 @@ import { Mesa } from '../../../classes/mesa';
 })
 export class MesasComponent implements OnInit {
     mesas: Mesa[];
+    public search: string;
     constructor(private _Cservice: CatalogosServiceService, private toastr: ToastrService, private router: Router) { }
 
     ngOnInit() {

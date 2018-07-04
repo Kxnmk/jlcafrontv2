@@ -9,9 +9,25 @@
             </ol>
         </div>
     </div>
+    <div class="row">
+        <div class="col-5">
+            <!-- Componente Subida de archivos -->
+            <app-upload></app-upload>
+        </div>
+    
+        <form role="form" class="col-7">
+            <div class="form-group input-group">
+                <div class="col-12 col-sm-12 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white " id="basic-addon1">
+                        <i class="fa fa-fw fa-search"></i>&nbsp;
+                    </span>
+                    <input type="text" class="form-control" name="searchString" placeholder="Busqueda..." [(ngModel)]="search">
+                </div>
+            </div>
+        </form>
+    </div>
 
-    <!-- Componente Subida de archivos -->
-    <app-upload></app-upload>
+    
 
     <!-- <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Documento </a> -->
 
@@ -28,7 +44,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let doc of documentos; let i = index">
+            <tr *ngFor="let doc of documentos| filter:search let i = index">
                 <th scope="row">{{doc.DocClave}}</th>
                 <td>{{doc.DocNombre}}</td>
                 <td>{{doc.DocDescripcion}}</td>

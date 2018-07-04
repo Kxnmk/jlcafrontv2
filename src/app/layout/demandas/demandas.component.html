@@ -1,6 +1,24 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Demandas'" [icon]="'fa-archive'"></app-page-header>
-    <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Demanda </a>
+    
+
+    <div class="row">
+        <div class="col-5">
+            <a class="btn btn-primary text-white btn-block" (click)="agregar()" id="btnAgregar"> Agregar Demanda </a>
+        </div>
+        
+        <form role="form" class = "col-7">
+            <div class="form-group input-group">
+                <div class="col-12 col-sm-12 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white " id="basic-addon1">
+                        <i class="fa fa-fw fa-search"></i>&nbsp;
+                    </span>
+                    <input type="text" class="form-control" name="searchString" placeholder="Busqueda..." [(ngModel)]="search">
+                </div>
+            </div>
+        </form>
+    </div>
+
     
     <!-- Tabla -->
     <table class="table">
@@ -18,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let demanda of demandas; let i = index">
+            <tr *ngFor="let demanda of demandas | filter:search let i = index">
                 <th scope="row">{{demanda.DemClave}}</th>
                 <td>{{demanda.DemFolio}}</td>
                 <td>{{demanda.ActNombre}}</td>

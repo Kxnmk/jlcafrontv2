@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsuariosComponent implements OnInit {
     usuarios: Usuario[];
+    public search: string;
 
     constructor(private _Uservice: UsuarioServiceService, private toastr: ToastrService, private router: Router) {}
     ngOnInit() {

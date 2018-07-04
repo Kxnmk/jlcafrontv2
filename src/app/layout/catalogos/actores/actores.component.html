@@ -1,7 +1,22 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Actores'" [icon]="'fa-street-view'"></app-page-header>
-    <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()"  id="btnAgregar"> Agregar Actor </a>
 
+    <div class="row">
+        <div class="col-5">
+            <a class="btn btn-primary text-white btn-block" (click)="agregar()" id="btnAgregar"> Agregar Actor </a>
+        </div>
+    
+        <form role="form" class="col-7">
+            <div class="form-group input-group">
+                <div class="col-12 col-sm-12 input-group-prepend">
+                    <span class="input-group-text bg-primary text-white " id="basic-addon1">
+                        <i class="fa fa-fw fa-search"></i>&nbsp;
+                    </span>
+                    <input type="text" class="form-control" name="searchString" placeholder="Busqueda..." [(ngModel)]="search">
+                </div>
+            </div>
+        </form>
+    </div>
     <!-- Tabla -->
     <table class="table">
         <thead class="thead-dark">
@@ -13,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let actor of actores; let i = index">
+            <tr *ngFor="let actor of actores | filter:search let i = index">
                 <th scope="row">{{actor.ActClave}}</th>
                 <td>{{actor.ActNombre}}</td>
                 <td>{{actor.ActDomicilio}}</td>

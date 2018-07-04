@@ -15,6 +15,7 @@ import { ComisionesService } from '../../shared/services/comisiones.service';
 })
 export class ComisionesComponent implements OnInit {
     comisiones: ComisionC[];
+    public search: string;
 
     constructor(private _Cservice: ComisionesService, private toastr: ToastrService, private router: Router) {
     }

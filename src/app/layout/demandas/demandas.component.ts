@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class DemandasComponent implements OnInit {
     demandas: DemandaCon[];
     rol: number;
+    public search: string;
     constructor(private _DService: DemandasService, private toastr: ToastrService, private router: Router) {
         try {
             this.rol = JSON.parse(sessionStorage.getItem('User'))[0].RolClave;

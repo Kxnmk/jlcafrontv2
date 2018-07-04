@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AudienciasComponent implements OnInit {
     audiencias: AudienciaC[];
     rol: number;
+    public search: string;
     constructor(private _Aservice: AudienciaService, private toastr: ToastrService, private router: Router) {
         try {
             this.rol = JSON.parse(sessionStorage.getItem('User'))[0].RolClave;

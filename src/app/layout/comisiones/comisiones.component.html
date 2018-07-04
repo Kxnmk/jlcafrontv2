@@ -1,6 +1,16 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Comisiones'" [icon]="'fa-slideshare'"></app-page-header>
     
+    <form role="form" class="col-7">
+        <div class="form-group input-group">
+            <div class="col-12 col-sm-12 input-group-prepend">
+                <span class="input-group-text bg-primary text-white " id="basic-addon1">
+                    <i class="fa fa-fw fa-search"></i>&nbsp;
+                </span>
+                <input type="text" class="form-control" name="searchString" placeholder="Busqueda..." [(ngModel)]="search">
+            </div>
+        </div>
+    </form>
     <!-- Tabla -->
     <table class="table">
         <thead class="thead-dark">
@@ -14,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let comision of comisiones; let i = index">
+            <tr *ngFor="let comision of comisiones| filter:search let i = index">
                 <th scope="row">{{comision.ComClave}}</th>
                 <th>{{comision.usrNombre}}</th>
                 <td>{{comision.RolDescripcion}}</td>

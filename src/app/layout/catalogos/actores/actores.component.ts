@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ActoresComponent implements OnInit {
     actores: Actor[];
+    public search: string;
     constructor(private _Cservice: CatalogosServiceService, private toastr: ToastrService, private router: Router) {}
 
     ngOnInit() {
