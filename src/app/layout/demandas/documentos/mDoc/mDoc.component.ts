@@ -47,7 +47,6 @@ export class MDocComponent implements OnInit {
 
                     this.action = 'mod';
 
-                    console.log();
 
                     const demid = +sessionStorage.getItem('demID');
                     this._Dservice.getDocumentosByDemanda(demid).subscribe(
@@ -55,7 +54,6 @@ export class MDocComponent implements OnInit {
                             if (data.length !== 0) {
                                 this._Dservice.setDocumentos(data);
                                 this.doc = this._Dservice.getDocumentoByID(this.index);
-                                console.log(this.doc);
                             } else {
                                 this.toastr.error('Error al obtener informacion');
 

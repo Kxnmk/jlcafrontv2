@@ -33,14 +33,20 @@ export class AudienciaService {
   countAudiencias() {
     return this._http.get<AudienciaC[]>(UrlServ + '/audiencias');
   }
+  getAudienciaById(i: number): AudienciaC {
+    let aux: AudienciaC;
+    for (const au of this.audiencias) {
+      if (au.AudClave === i) {
+        aux = au;
+      }
+    }
+    return aux;
+  }
 
-  
   setAudiencias(audiencias: AudienciaC[]) {
     this.audiencias = audiencias;
   }
-  getAudienciaById(i: number): AudienciaC {
-    return this.audiencias[i];
-  }
+ 
 
 
   updateAudiencia(nAudiencia: Audiencia): Observable<any> {

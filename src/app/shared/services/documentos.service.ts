@@ -32,7 +32,15 @@ export class DocumentosService {
   }
 
   getDocumentoByID(i: number): DocumentoC {
-    return this.documentos[i];
+    let aux: DocumentoC;
+    for (const au of this.documentos) {
+      // tslint:disable-next-line:triple-equals
+      if (au.DocClave == i) {
+        aux = au;
+
+      }
+    }
+    return aux;
   }
 
   updateDocumento(nDoc: Documento): Observable<any> {

@@ -47,7 +47,7 @@
                 <td>{{demanda.StaNombre}}</td>
                 <td>
                     <div class="btn-group-vertical btn-group-sm">
-                        <button type="button" [routerLink]="['/mDemanda',i]" class="btn btn-sm btn-primary">Modificar</button>
+                        <button type="button" [routerLink]="['/mDemanda',demanda.DemClave]" class="btn btn-sm btn-primary">Modificar</button>
                         <button type="button" [routerLink]="['/documentos', demanda.DemClave]" class="btn btn-sm btn-info">Documentos</button>
                     </div>
                 </td>

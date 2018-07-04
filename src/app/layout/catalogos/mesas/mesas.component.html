@@ -33,7 +33,7 @@
                 <td>{{mesa.MesNombre}}</td>
                 <td>{{mesa.MesDescripcion}}</td>
                 <td>
-                    <button type="button" [routerLink]="['/mMesa',i]" class="btn btn-sm btn-success">Modificar</button>
+                    <button type="button" [routerLink]="['/mMesa',mesa.MesClave]" class="btn btn-sm btn-success">Modificar</button>
                 </td>
             </tr>
         </tbody>

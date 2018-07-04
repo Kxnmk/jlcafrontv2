@@ -35,8 +35,13 @@ export class UsuarioServiceService {
     return this.usuarios;
   }
   getUsuariobyId(i: number): Usuario {
-    console.log(this.usuarios);
-    return this.usuarios[i];
+    let aux: Usuario;
+    for (const au of this.usuarios) {
+      if (au.usrClave === i) {
+        aux = au;
+      }
+    }
+    return aux;
   }
   getRoles(): Observable<Rol[]>{
     return this._http.get<Rol[]>(UrlServ + '/roles');

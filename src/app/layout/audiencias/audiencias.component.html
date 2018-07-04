@@ -38,7 +38,7 @@
                 <td>{{audiencia.AudFecha | date: 'dd/MM/yyyy' : 'UTC'}}</td>
                 <td>{{audiencia.AudHora | date: 'h:mm a' : 'UTC'}}</td>
                 <td>
-                    <button type="button" [routerLink]="['/mAud',i]" class="btn btn-sm btn-success">Modificar</button>
+                    <button type="button" [routerLink]="['/mAud',audiencia.AudClave]" class="btn btn-sm btn-success">Modificar</button>
                 </td>
             </tr>
         </tbody>

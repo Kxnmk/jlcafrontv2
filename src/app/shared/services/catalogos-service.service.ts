@@ -41,8 +41,16 @@ export class CatalogosServiceService {
     this.actores = actores;
   }
   getActorbyId(i: number): Actor {
-    return this.actores[i];
+    let aux: Actor;
+    for (const au of this.actores) {
+      if (au.ActClave === i) {
+        aux = au;
+      }
+    }
+    return aux;
   }
+
+
 
   updateActor(nActor: Actor): Observable<any> {
     const aux = JSON.stringify(nActor);
@@ -62,7 +70,13 @@ export class CatalogosServiceService {
     this.demandados = demandados;
   }
   getDemandadobyId(i: number): Demandado {
-    return this.demandados[i];
+    let aux: Demandado;
+    for (const au of this.demandados) {
+      if (au.DeoClave === i) {
+        aux = au;
+      }
+    }
+    return aux;
   }
 
   updateDemandado(nDemandado: Demandado): Observable<any> {
@@ -83,7 +97,13 @@ export class CatalogosServiceService {
     this.mesas = mesas;
   }
   getMesaById(i: number): Mesa {
-    return this.mesas[i];
+    let aux: Mesa;
+    for (const au of this.mesas) {
+      if (au.MesClave === i) {
+        aux = au;
+      }
+    }
+    return aux;
   }
 
   updateMesa(nMesa: Mesa): Observable<any> {

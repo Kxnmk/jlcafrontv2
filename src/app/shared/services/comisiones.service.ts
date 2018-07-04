@@ -31,11 +31,17 @@ export class ComisionesService {
     return this._http.get<ComisionC[]>(UrlServ + '/comisiones/');
   }
 
-  setComision(audiencias: ComisionC[]) {
-    this.comisiones = audiencias;
+  setComision(comision: ComisionC[]) {
+    this.comisiones = comision;
   }
   getComisionById(i: number): ComisionC {
-    return this.comisiones[i];
+    let aux: ComisionC;
+    for (const au of this.comisiones) {
+      if (au.ComClave === i) {
+        aux = au;
+      }
+    }
+    return aux;
   }
 
   addComision(nComision: Comision): Observable<any> {

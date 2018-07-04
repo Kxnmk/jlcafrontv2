@@ -57,6 +57,7 @@ export class MAudComponent implements OnInit {
 
             });
 
+
         this._Aservice.getMesas().subscribe(
             data => {
                 if (data.length !== 0) {
@@ -79,8 +80,10 @@ export class MAudComponent implements OnInit {
         this.parms = this.route.params.subscribe(params => {
             try {
                 this.index = +params['id'];
+                let aux: AudienciaC[];
 
                 if ( !isNaN(this.index) ) {
+
 
                     this.hd = true;
                     this.action = 'mod';

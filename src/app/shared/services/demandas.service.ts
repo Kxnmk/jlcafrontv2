@@ -33,7 +33,13 @@ export class DemandasService {
     this.demandas = demandas;
   }
   getDemandaById(i: number): DemandaCon {
-    return this.demandas[i];
+    let aux: DemandaCon;
+    for (const au of this.demandas) {
+      if (au.DemClave === i) {
+        aux = au;
+      }
+    }
+    return aux;
   }
   countDemandas(): Observable<DemandaI[]> {
     return this._http.get<DemandaI[]>(UrlServ + '/demandas');
