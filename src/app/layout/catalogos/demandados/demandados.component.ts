@@ -22,7 +22,7 @@ export class DemandadosComponent implements OnInit {
                     this.demandados = data;
 
                 } else {
-                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                    this.toastr.info('No hay demandados Registrados');
                 }
             },
             err => {

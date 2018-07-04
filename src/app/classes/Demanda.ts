@@ -6,6 +6,8 @@ export class Demanda {
     DemCiudad: string;
     DemFecha: string;
     DemTipo: string;
+    DemComentarios: string;
+    DemClaveProyectista?: number;
     DemandadoC() {
     }
 }
@@ -17,6 +19,8 @@ export interface DemandaI {
     DemCiudad: string;
     DemFecha: string;
     DemTipo: string;
+    DemComentarios: string;
+    DemClaveProyectista?: number;
 }
 export interface DemandaCon {
     DemClave: number;
@@ -26,11 +30,14 @@ export interface DemandaCon {
     DemCiudad: string;
     DemFecha: string;
     DemTipo: string;
+    DemClaveProyectista?: number;
     ActNombre: string;
     DeoNombre: string;
     StaNombre: string;
     StaClave: number;
     StaDescripcion: string;
+    DemComentarios: string;
+    SDComentarios?: string;
 
 }
 export class DemandaConC {
@@ -38,6 +45,7 @@ export class DemandaConC {
     DemFolio: string;
     DemClaveActor: number;
     DemClaveDemandado: number;
+    DemClaveProyectista?: number;
     DemCiudad: string;
     DemFecha: string;
     DemTipo: string;
@@ -46,5 +54,6 @@ export class DemandaConC {
     StaNombre: string;
     StaClave: number;
     StaDescripcion: string;
+    DemComentarios: string;
 
 }

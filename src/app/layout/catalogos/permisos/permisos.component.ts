@@ -23,7 +23,7 @@ export class PermisosComponent implements OnInit {
                     this.roles = data;
 
                 } else {
-                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                    this.toastr.error('No hay permisos registrados Contacte al Administrador');
                 }
             },
             err => {

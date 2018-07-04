@@ -26,6 +26,7 @@ export class MusuarioComponent implements OnInit {
     public hd = true;
     public mesa = false;
 
+
     private action = 'creacion';
     private nextId: number;
     clave;

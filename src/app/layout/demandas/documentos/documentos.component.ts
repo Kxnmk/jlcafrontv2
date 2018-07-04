@@ -31,7 +31,7 @@ export class DocumentosComponent implements OnInit {
                             this.documentos = data;
                             this._DService.setDocumentos(data);
                         } else {
-                            this.toastr.error('Error al obtener informacion');
+                            this.toastr.info('Esta Demanda Aun no tiene Documentos');
 
                         }
                     },

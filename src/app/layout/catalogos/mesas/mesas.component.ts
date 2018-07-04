@@ -22,7 +22,7 @@ export class MesasComponent implements OnInit {
                     this.mesas = data;
 
                 } else {
-                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                    this.toastr.info('No hay mesas Registradas');
                 }
             },
             err => {

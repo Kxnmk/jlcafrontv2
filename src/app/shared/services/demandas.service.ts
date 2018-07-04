@@ -7,6 +7,7 @@ import { DemandaCon, Demanda, DemandaI } from '../../classes/Demanda';
 import { Actor } from '../../classes/Actor';
 import { Demandado } from '../../classes/Demandado';
 import { StaCatalogo, Status, StatusDemanda } from '../../classes/Status';
+import { Proy } from '../../classes/Proy';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +59,7 @@ export class DemandasService {
   }
 
   // Estatus status Catalogo
-  getStatus(): Observable<StaCatalogo[]>{
+  getStatus(): Observable<StaCatalogo[]> {
     return this._http.get<StaCatalogo[]>(UrlServ + '/status');
   }
 
@@ -72,4 +73,8 @@ export class DemandasService {
     return this._http.post<any>(UrlServ + '/statusD', aux, this.httpOptions);
   }
 
+  // Proyectistas Catalogo
+  getProyec(): Observable<Proy[]> {
+    return this._http.get<Proy[]>(UrlServ + '/proyectistas');
+  }
 }

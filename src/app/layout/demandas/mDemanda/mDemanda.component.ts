@@ -15,6 +15,7 @@ import { DemandaCon, DemandaConC, Demanda } from '../../../classes/Demanda';
 import { DemandasService } from '../../../shared/services/demandas.service';
 import { Demandado } from '../../../classes/Demandado';
 import { Status, StaCatalogo, StatusDemanda } from '../../../classes/Status';
+import { Proy } from '../../../classes/Proy';
 
 
 @Component({
@@ -32,8 +33,12 @@ export class MDemandaComponent implements OnInit {
     private rol: number;
     public actores: Actor[];
     public demandados: Demandado[];
+    public pro = false;
+    public mpro = false;
+    public hd = true;
     clave;
     public status: StaCatalogo[];
+    public proyec: Proy[];
     private usI: number;
     title = 'Agregar Demanda';
 
@@ -92,22 +97,37 @@ export class MDemandaComponent implements OnInit {
 
             });
 
+        this._DService.getProyec().subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.proyec = data;
+                } else {
+                    this.toastr.error('Error al obtener informacion');
+
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+
+            });
+
+
+
+
         }
 
     ngOnInit() {
 
-        const fclave = <HTMLInputElement>document.getElementById('DemClave');
-        const ffolio = <HTMLInputElement>document.getElementById('DemFolio');
         this.parms = this.route.params.subscribe(params => {
             try {
                 this.index = +params['id'];
 
                 if ( !isNaN(this.index) ) {
-                    fclave.disabled = true;
-                    ffolio.disabled = true;
 
                     this.action = 'mod';
                     this.title = 'Demanda';
+                    this.hd = true;
 
 
                     this._DService.getDemadnasByRol(this.rol).subscribe(
@@ -116,6 +136,9 @@ export class MDemandaComponent implements OnInit {
                                 this._DService.setDemandas(data);
                                 this.demanda = this._DService.getDemandaById(this.index);
                                 this.title = this.title + ' ' + this.demanda.ActNombre + ' vs ' + this.demanda.DeoNombre;
+                                if (this.demanda.StaClave === 3){
+                                    this.pro = true;
+                                }
                             } else {
                                 this.toastr.error('Error al obtener informacion');
 
@@ -128,17 +151,7 @@ export class MDemandaComponent implements OnInit {
                         });
                 } else {
 
-                    this._DService.countDemandas().subscribe(
-                        data => {
-                            console.log(data);
-                            if (data.length !== 0) {
-                                this.nextId = data.length;
-                            } else {
-                                this.nextId = 0;
-                            }
-                            fclave.value = '' + (this.nextId + 1);
-                        }
-                    );
+                    this.hd = false;
 
                 }
 
@@ -152,12 +165,21 @@ export class MDemandaComponent implements OnInit {
 
     }
 
+    showProy(sts) {
+        if (+sts === 3) {
+            this.pro = true;
+        } else {
+            this.pro = false;
+        }
+
+    }
+
 
     guardar() {
         const btn = <HTMLInputElement>document.getElementById('btnGuardar');
         btn.style.display = 'none';
 
-        const clave = (<HTMLInputElement>document.getElementById('DemClave')).value;
+
         const folio = (<HTMLInputElement>document.getElementById('DemFolio')).value;
         const actor = (<HTMLInputElement>document.getElementById('DemClaveActor')).value;
         const demandado = (<HTMLInputElement>document.getElementById('DemClaveDemandado')).value;
@@ -166,9 +188,12 @@ export class MDemandaComponent implements OnInit {
         const tipo = (<HTMLInputElement>document.getElementById('DemTipo')).value;
 
         const status = (<HTMLInputElement>document.getElementById('demStatus')).value;
+        const com = (<HTMLInputElement>document.getElementById('statusComentarios')).value;
+        
+
 
         const nDemanda = new Demanda();
-        nDemanda.DemClave = +clave;
+        
         nDemanda.DemFolio = folio;
         nDemanda.DemClaveActor = +actor;
         nDemanda.DemClaveDemandado = +demandado;
@@ -176,14 +201,28 @@ export class MDemandaComponent implements OnInit {
         nDemanda.DemFecha = fecha;
         nDemanda.DemTipo = tipo;
 
+        if (this.hd) {
+            const clave = (<HTMLInputElement>document.getElementById('DemClave')).value;
+            nDemanda.DemClave = +clave;
+        }
+
         const stat = new StatusDemanda();
         stat.SDClaveDem = nDemanda.DemClave;
         stat.SDClaveSta = +status;
         stat.SDClaveUsr = this.usI;
+        stat.SDComentarios = com;
 
         const d = new Date();
         stat.SDTimestamp = d.toISOString();
         stat.SDFechaCambio = d.toISOString();
+
+        if (+status === 3) {
+            const pro = (<HTMLInputElement>document.getElementById('proyDem')).value;
+            nDemanda.DemClaveProyectista = +pro;
+        } else {
+            nDemanda.DemClaveProyectista = null;
+        }
+
 
 
 
@@ -217,7 +256,8 @@ export class MDemandaComponent implements OnInit {
         } else {
             this._DService.addDemanda(nDemanda).subscribe(
                 status => {
-                    if (status.message === 'Success') {
+                    if (status.length !== 0) {
+                        stat.SDClaveDem = status[0].DemClave;
                         this._DService.addStatusD(stat).subscribe(
                             status => {
                                 if (status.message === 'Success') {
@@ -228,7 +268,7 @@ export class MDemandaComponent implements OnInit {
                             }
                         );
                     } else {
-                        this.toastr.error('Error en el servidor');
+                        this.toastr.error('Error al agregar la demanda');
                     }
                 }
             );

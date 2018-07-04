@@ -26,7 +26,7 @@ export class ComisionesComponent implements OnInit {
                     this.comisiones = data;
 
                 } else {
-                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                    this.toastr.error('No hay Comisiones Registradas Contacte al Adminitrador');
                 }
             },
             err => {

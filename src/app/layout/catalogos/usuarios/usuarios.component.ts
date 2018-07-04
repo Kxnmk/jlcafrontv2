@@ -23,7 +23,7 @@ export class UsuariosComponent implements OnInit {
                 if (data.length !== 0) {
                     this.usuarios = data;
                 } else {
-                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                    this.toastr.error('No hay Usuarios Registrados');
                 }
             },
             err => {

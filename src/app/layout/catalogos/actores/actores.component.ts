@@ -22,7 +22,7 @@ export class ActoresComponent implements OnInit {
                     this.actores = data;
 
                 } else {
-                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                    this.toastr.info('No hay Actores Registrados');
                 }
             },
             err => {

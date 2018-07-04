@@ -50,7 +50,7 @@ export class UploadService {
 
           // Close the progress-stream if we get an answer form the API
           // The upload is complete
-          console.log(event);
+
           progress.complete();
         }
       });

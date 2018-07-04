@@ -16,6 +16,7 @@ import { DemandaCon } from '../../../classes/Demanda';
 
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'app-mAud',
     templateUrl: './mAud.component.html',
     styleUrls: ['./mAud.component.scss'],

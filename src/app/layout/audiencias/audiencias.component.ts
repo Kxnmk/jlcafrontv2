@@ -27,7 +27,7 @@ export class AudienciasComponent implements OnInit {
                     this.audiencias = data;
 
                 } else {
-                    this.toastr.error('Usuario o contraseña no valida intente de nuevo');
+                    this.toastr.info('No existen Audiencias Programadas Para ti');
                 }
             },
             err => {
