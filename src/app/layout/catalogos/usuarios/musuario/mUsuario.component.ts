@@ -29,6 +29,7 @@ export class MusuarioComponent implements OnInit {
     private action = 'creacion';
     private nextId: number;
     clave;
+    title = 'Agregar Usuario';
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _Uservice: UsuarioServiceService) {
             this.user = new UsuarioGC();
@@ -74,10 +75,10 @@ export class MusuarioComponent implements OnInit {
                 if (!isNaN(this.index)) {
 
 
-                    console.log('Modificaciones');
 
                     this.action = 'mod';
                     this.hd = true;
+                    this.title = 'Modificar Usuario';
 
 
 

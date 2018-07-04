@@ -1,16 +1,17 @@
 <div [@routerTransition]>
     <div class="col-sm-12">
+        <p class="h1 text-center">Audiencias Programadas</p>
 
-        <div class="row">
+        <div class="row control-bar">
             <div class="col align-self-start">
                 <div class="btn-group">
-                    <div class="btn btn-primary" mwlCalendarPreviousView view="month" [(viewDate)]="viewDate">
+                    <div class="btn btn-light" mwlCalendarPreviousView view="month" [(viewDate)]="viewDate">
                         Anterior
                     </div>
                     <div class="btn btn-secondary" mwlCalendarToday [(viewDate)]="viewDate">
                         Hoy
                     </div>
-                    <div class="btn btn-primary" mwlCalendarNextView view="month" [(viewDate)]="viewDate">
+                    <div class="btn btn-light" mwlCalendarNextView view="month" [(viewDate)]="viewDate">
                         Siguiente
                     </div>
                 </div>
@@ -22,9 +23,9 @@
             </div>
             <div class="col align-self-end">
                 <div class="btn-group">
-                    <a class="btn btn-primary text-white" (click)="setView('month')" id="btnGuardar"> Mes </a>
+                    <a class="btn btn-light text-dark" (click)="setView('month')" id="btnGuardar"> Mes </a>
                     <a class="btn btn-secondary text-white" (click)="setView('week')" id="btnGuardar"> Semana </a>
-                    <a class="btn btn-primary text-white" (click)="setView('day')" id="btnGuardar"> Dia </a>
+                    <a class="btn btn-light text-dark" (click)="setView('day')" id="btnGuardar"> Dia </a>
                 </div>
             </div>
         </div>

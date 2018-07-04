@@ -69,7 +69,6 @@ export class InicioComponent implements OnInit {
         this.events$ = this._http.get<AudienciaC[]>(UrlServ + '/audiencias').pipe(
             map(response => {
                 const a = new Array<CalendarEvent<{aud: AudienciaC}>>();
-                console.log(response);
                 for (const aud of response) {
                     const d1 = new Date(aud.AudFecha);
                     const t1 = new Date(aud.AudHora);
@@ -107,33 +106,6 @@ export class InicioComponent implements OnInit {
         );
 
     }
-
-    // calcTime(date) {
-    //     console.log(date);
-    //     console.log(date.toISOString());
-
-    //     const lcl = new Date();
-    //     console.log(lcl);
-    //     console.log(lcl.toISOString());
-
-
-    //     // create Date object for current location
-    //     // const d =  date;
-    //     // const lcl = new Date();
-
-    //     // convert to msec
-    //     // add local time zone offset
-    //     // get UTC time in msec
-    //     //const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-
-    //     // create new Date object for different city
-    //     // using supplied offset
-    //     //const nd = new Date(utc + (3600000 * lcl.getTimezoneOffset()));
-    //     //const nd = new Date(utc);
-
-    //     // return time as a string
-    //     //console.log('The local is ' + nd);
-    // }
 
     dayClicked({
         date,

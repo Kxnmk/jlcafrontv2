@@ -27,6 +27,7 @@ export class MDemandadoComponent implements OnInit {
     private action = 'creacion';
     private nextId: number;
     clave;
+    title = 'Agregar Demandado';
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _Cservice: CatalogosServiceService) {
             this.demandado = new DemandadoC();
@@ -43,6 +44,7 @@ export class MDemandadoComponent implements OnInit {
                     fclave.disabled = true;
 
                     this.action = 'mod';
+                    this.title = 'Modificar Demandado';
 
 
                     this._Cservice.getDemandados().subscribe(

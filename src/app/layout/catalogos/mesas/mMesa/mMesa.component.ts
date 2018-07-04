@@ -26,6 +26,7 @@ export class MMesaComponent implements OnInit {
     private action = 'creacion';
     private nextId: number;
     clave;
+    title = 'Agregar Mesa';
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _Cservice: CatalogosServiceService) {
             this.mesa = new Mesac();
@@ -42,6 +43,7 @@ export class MMesaComponent implements OnInit {
                     fclave.disabled = true;
 
                     this.action = 'mod';
+                    this.title = 'Modificar Mesa';
 
 
                     this._Cservice.getMesas().subscribe(

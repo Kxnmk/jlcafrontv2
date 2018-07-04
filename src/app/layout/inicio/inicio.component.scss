@@ -1,0 +1,17 @@
+hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #007DF7;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.control-bar{
+    background-color: #222;
+    padding: 1em 1em;
+    color: #fefe;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}

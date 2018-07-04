@@ -35,6 +35,7 @@ export class MDemandaComponent implements OnInit {
     clave;
     public status: StaCatalogo[];
     private usI: number;
+    title = 'Agregar Demanda';
 
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _DService: DemandasService) {
@@ -106,6 +107,7 @@ export class MDemandaComponent implements OnInit {
                     ffolio.disabled = true;
 
                     this.action = 'mod';
+                    this.title = 'Demanda';
 
 
                     this._DService.getDemadnasByRol(this.rol).subscribe(
@@ -113,6 +115,7 @@ export class MDemandaComponent implements OnInit {
                             if (data.length !== 0) {
                                 this._DService.setDemandas(data);
                                 this.demanda = this._DService.getDemandaById(this.index);
+                                this.title = this.title + ' ' + this.demanda.ActNombre + ' vs ' + this.demanda.DeoNombre;
                             } else {
                                 this.toastr.error('Error al obtener informacion');
 

@@ -32,6 +32,7 @@ export class MAudComponent implements OnInit {
     clave;
     rol: number;
     hd = false;
+    title = 'Agregar Audiencia';
 
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _Aservice: AudienciaService) {
@@ -82,6 +83,7 @@ export class MAudComponent implements OnInit {
 
                     this.hd = true;
                     this.action = 'mod';
+                    this.title = 'Modificar Audiencia';
                     folio.disabled = true;
 
                     this._Aservice.getAudienciasByRol(this.rol).subscribe(

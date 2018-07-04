@@ -26,6 +26,7 @@ export class MActorComponent implements OnInit {
     private action = 'creacion';
     private nextId: number;
     clave;
+    title = 'Agregar Actor';
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _Cservice: CatalogosServiceService) {
             this.actor = new ActorC();
@@ -42,6 +43,7 @@ export class MActorComponent implements OnInit {
                     fclave.disabled = true;
 
                     this.action = 'mod';
+                    this.title = 'Modificar Actor';
 
                     this._Cservice.getActores().subscribe(
                         data => {

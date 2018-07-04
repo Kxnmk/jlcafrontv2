@@ -25,3 +25,15 @@
 .disabled {
   pointer-events: none; 
 }
+
+hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 10px solid #222;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin: 1em 0;
+    padding: 0;
+}
