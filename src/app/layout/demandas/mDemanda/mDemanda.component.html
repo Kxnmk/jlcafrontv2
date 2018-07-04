@@ -139,7 +139,7 @@
         </form>
     </div>
     <div class="col-sm-1">
-        <a class="btn btn-secondary text-white btn-lg" [routerLink]="['/histo',demanda.DemClave]" id="btnGuardar"> Ver Historico </a>
+        <a class="btn btn-secondary text-white btn-lg" [routerLink]="['/histo',demanda.DemClave]" id="btnGuardar" *ngIf="hd"> Ver Historico </a>
     </div>
 
 

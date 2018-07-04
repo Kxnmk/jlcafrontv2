@@ -40,6 +40,7 @@ export class MDemandaComponent implements OnInit {
     public status: StaCatalogo[];
     public proyec: Proy[];
     private usI: number;
+    private comSt = '';
     title = 'Agregar Demanda';
 
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
@@ -136,6 +137,7 @@ export class MDemandaComponent implements OnInit {
                                 this._DService.setDemandas(data);
                                 this.demanda = this._DService.getDemandaById(this.index);
                                 this.title = this.title + ' ' + this.demanda.ActNombre + ' vs ' + this.demanda.DeoNombre;
+                                sessionStorage.setItem('titleDem', this.title);
                                 if (this.demanda.StaClave === 3){
                                     this.pro = true;
                                 }
@@ -233,19 +235,21 @@ export class MDemandaComponent implements OnInit {
                 status => {
                     if (status.message === 'Success') {
                         btn.disabled = false;
-                        this._DService.updateStatusD(stat).subscribe(
-                            status => {
-                                if (status.message === 'Success') {
-                                    this._DService.addStatusD(stat).subscribe(
-                                        status => {
-                                            this.toastr.success('Demanda Guardada');
-                                            this.router.navigate(['/demandas']);
-                                            btn.disabled = false;
-                                        }
-                                    );
+                        if (this.demanda.StaClave !== status) {
+                            this._DService.updateStatusD(stat).subscribe(
+                                status => {
+                                    if (status.message === 'Success') {
+                                        this._DService.addStatusD(stat).subscribe(
+                                            status => {
+                                                this.toastr.success('Demanda Guardada');
+                                                this.router.navigate(['/demandas']);
+                                                btn.disabled = false;
+                                            }
+                                        );
+                                    }
                                 }
-                            }
-                        );
+                            );
+                        }
 
                     } else {
                         this.toastr.error('Error en el servidor');

@@ -48,4 +48,5 @@ export interface StatusTime{
     StaNombre: string;
     SDTimestamp: string;
     StaDescripcion: string;
+    SDComentarios: string;
 }
