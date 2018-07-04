@@ -80,7 +80,7 @@
         </form>
     </div>
     <div class="col-sm-1">
-        <a class="btn btn-info text-white btn-lg" (click)="verDoc()" id="btnVer"> Ver Documento</a>
+        <a class="btn btn-info text-white btn-lg" [routerLink]="['/pDoc',doc.DocClave]" id="btnVer"> Ver Documento</a>
     </div>
 
     

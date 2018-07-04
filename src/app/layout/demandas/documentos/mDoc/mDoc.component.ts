@@ -118,4 +118,5 @@ export class MDocComponent implements OnInit {
     lastPage() {
         this._loc.back();
     }
+
 }
