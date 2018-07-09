@@ -1,16 +1,34 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <a class="navbar-brand" href="#">Junta Local de Conciliacion y Abritraje Colima
     <i class="fa fa-fw fa-university"></i>&nbsp;</a>
+    <div class="nav-item dropdown" ngbDropdown>
+            <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
+                <i class="fa fa-envelope"></i> Pendientes
+                <span class="badge badge-info">{{size}}</span>
+                <b class="caret"></b>
+                <span class="sr-only">(current)</span>
+            </a>
+            <ul class="dropdown-menu-right messages" ngbDropdownMenu>
+        
+                <li class="media" *ngFor="let de of demandas">
+                    <div class="media-body">
+                        <h5 class="bg-dark text-white">Folio: {{de.DemFolio}}
+                            <i *ngIf="de.DemTipo === 'Extraordinaria' " class="fa arrsize fa-fw fa-arrow-circle-left text-danger"></i> &nbsp;</h5>
+                        <p class="last"> Demandado: {{de.DeoNombre}}</p>
+                        <p class="last"> Actor: {{de.ActNombre}}</p>
+                        <p class="last"> Tipo: {{de.DemTipo}}</p>
+                    </div>
+                </li>
+            </ul>
+    </div>
+    
     <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
         <!-- <span class="navbar-toggler-icon"></span> -->
         <i class="fa fa-bars text-muted" aria-hidden="true"></i>
     </button>
+
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item d-none d-xl-block">
-                
-            </li> &nbsp;
-            
 
             
             <li class="nav-item">
@@ -18,28 +36,6 @@
                     <i class="fa fa-user"></i> {{usuarioName}}
                 </a>
             </li> &nbsp;
-            
-            
-
-            <li class="nav-item dropdown" ngbDropdown>
-                <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
-                    <i class="fa fa-envelope"></i> <span class="badge badge-info">{{size}}</span>
-                    <b class="caret"></b>
-                    <span class="sr-only">(current)</span>
-                </a>
-                <ul class="dropdown-menu-right messages" ngbDropdownMenu>
-                    
-                    <li class="media" *ngFor="let de of demandas"  >
-                        <div class="media-body">
-                            <h5 class="bg-dark text-white">Folio: {{de.DemFolio}} <i *ngIf="de.DemTipo === 'Extraordinaria' " class="fa arrsize fa-fw fa-arrow-circle-left text-danger"></i> &nbsp;</h5>
-                            <p class="last"> Demandado: {{de.DeoNombre}}</p>
-                            <p class="last"> Actor: {{de.ActNombre}}</p>
-                            <p class="last"> Tipo: {{de.DemTipo}}</p>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-
             
 
             <li class="nav-item">

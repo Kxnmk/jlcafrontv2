@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     rol: number;
     size = 0;
 
-    constructor(private translate: TranslateService, public router: Router, private _DService: DemandasService, 
+    constructor(private translate: TranslateService, public router: Router, private _DService: DemandasService,
         private toastr: ToastrService) {
 
         try {
