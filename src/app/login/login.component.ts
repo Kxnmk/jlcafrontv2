@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
                 if (data.length !== 0) {
                     this.uLog = data;
                     sessionStorage.setItem('User', JSON.stringify(this.uLog));
-                    localStorage.setItem('isLoggedin', 'true');
+                    sessionStorage.setItem('isLoggedin', 'true');
                     this.router.navigate(['/inicio']);
                 } else {
                     this.toastr.error('Usuario o contraseña no valida intente de nuevo');
