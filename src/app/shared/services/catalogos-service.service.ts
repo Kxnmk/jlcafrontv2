@@ -54,7 +54,6 @@ export class CatalogosServiceService {
 
   updateActor(nActor: Actor): Observable<any> {
     const aux = JSON.stringify(nActor);
-    console.log(aux);
     return this._http.put<any>(UrlServ + '/actores/' + nActor.ActClave, aux, this.httpOptions);
   }
   addActor(nActor: Actor): Observable<any> {
@@ -81,7 +80,6 @@ export class CatalogosServiceService {
 
   updateDemandado(nDemandado: Demandado): Observable<any> {
     const aux = JSON.stringify(nDemandado);
-    console.log(aux);
     return this._http.put<any>(UrlServ + '/demandados/' + nDemandado.DeoClave, aux, this.httpOptions);
   }
   addDemandado(nDemandado: Demandado): Observable<any> {

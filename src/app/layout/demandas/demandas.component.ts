@@ -38,4 +38,9 @@ export class DemandasComponent implements OnInit {
     agregar() {
         this.router.navigate(['/mDemanda']);
     }
+
+    showDocuments(dem: DemandaCon) {
+        sessionStorage.setItem('demFolio', dem.DemFolio);
+        this.router.navigate(['/documentos', dem.DemClave]);
+    }
 }

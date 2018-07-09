@@ -145,6 +145,11 @@ export class MusuarioComponent implements OnInit {
         const btn = <HTMLInputElement>document.getElementById('btnGuardar');
         btn.style.display = 'none';
 
+        if (this.hd) {
+            const btng = <HTMLInputElement>document.getElementById('btnBorrar');
+            btng.style.display = 'none';
+        }
+
 
         const nombre = (<HTMLInputElement>document.getElementById('usrNombre')).value;
         const usuario = (<HTMLInputElement>document.getElementById('usrName')).value;
@@ -173,9 +178,6 @@ export class MusuarioComponent implements OnInit {
         } else {
             nuser.claveMesa = null;
         }
-
-
-        console.log(nuser);
 
 
 

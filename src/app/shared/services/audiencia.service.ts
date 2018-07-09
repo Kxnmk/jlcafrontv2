@@ -46,7 +46,7 @@ export class AudienciaService {
   setAudiencias(audiencias: AudienciaC[]) {
     this.audiencias = audiencias;
   }
- 
+
 
 
   updateAudiencia(nAudiencia: Audiencia): Observable<any> {

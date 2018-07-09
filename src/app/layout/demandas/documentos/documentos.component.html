@@ -9,7 +9,7 @@
             </ol>
         </div>
     </div>
-    <p class="h1 text-center">Documentos</p>
+    <p class="h2 text-center">{{title}}</p>
     <hr/>
 
     <div class="row">
@@ -32,8 +32,6 @@
 
     
 
-    <!-- <a class="btn btn-primary col-xl-3 text-white" (click)="agregar()" id="btnAgregar"> Agregar Documento </a> -->
-
     <!-- Tabla -->
     <table class="table">
         <thead class="thead-dark">
@@ -43,6 +41,8 @@
                 <th scope="col">Descripcion</th>
                 <th scope="col">Fecha Creacion</th>
                 <th scope="col">Acciones</th>
+                <th scope="col"><button type="button" (click)="refresh()" class="btn btn-sm btn-secondary">
+                    <i class="fa fa-fw fa-refresh"></i>&nbsp;</button></th>
 
             </tr>
         </thead>

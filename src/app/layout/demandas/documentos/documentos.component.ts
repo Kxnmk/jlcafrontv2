@@ -17,6 +17,8 @@ export class DocumentosComponent implements OnInit {
     demanda: number;
     private parms: any;
     public search: string;
+    folio;
+    title = 'Documentos demanda Folio: ';
 
     constructor(private toastr: ToastrService, private router: Router,
         private _DService: DocumentosService, private route: ActivatedRoute) {}
@@ -27,12 +29,14 @@ export class DocumentosComponent implements OnInit {
             try {
                 this.demanda = +params['id'];
                 sessionStorage.setItem('demID', '' + this.demanda);
+                
+                this.folio = sessionStorage.getItem('demFolio');
+                this.title = this.title + this.folio;
                 this._DService.getDocumentosByDemanda(this.demanda).subscribe(
                     data => {
                         if (data.length !== 0) {
                             this.documentos = data;
                             this._DService.setDocumentos(data);
-                            console.log(this.documentos);
                         } else {
                             this.toastr.info('Esta Demanda Aun no tiene Documentos');
 
@@ -54,7 +58,24 @@ export class DocumentosComponent implements OnInit {
     }
 
     descargarArchivo(url) {
-        console.log(url);
         const nW = window.open(UrlServ + /upload/ + url);
+    }
+
+    refresh() {
+        this._DService.getDocumentosByDemanda(this.demanda).subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.documentos = data;
+                    this._DService.setDocumentos(data);
+                } else {
+                    this.toastr.info('Esta Demanda Aun no tiene Documentos');
+
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+
+            });
     }
 }
