@@ -31,7 +31,7 @@
                 <td>{{comision.ComFechaAsignacion | date: 'dd/MM/yyyy' : 'UTC'}}</td>
                 <td>{{comision.MesNombre}}</td>
                 <td>
-                    <button type="button" [routerLink]="['/mCom',comision.ComClave]" class="btn btn-sm btn-success">Modificar</button>
+                    <button type="button" [routerLink]="['/mCom',comision.ComClave]" class="btn btn-sm btn-primary"><i class="fa fa-fw fa-pencil"></i>&nbsp;</button>
                 </td>
             </tr>
         </tbody>

@@ -22,6 +22,8 @@ import { ToastrService } from 'ngx-toastr';
 import { AudienciaC } from '../../classes/Audiencia';
 
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+import { DemandasService } from '../../shared/services/demandas.service';
+import { DemandaCon } from '../../classes/Demanda';
 
 
 
@@ -51,14 +53,19 @@ const colors: any = {
 export class InicioComponent implements OnInit {
     locale = 'es-MX';
     view = 'month';
+    demandas: DemandaCon[];
+    dO: DemandaCon[];
+    dE: DemandaCon[];
 
     viewDate: Date = new Date();
 
     events$: Observable<Array<CalendarEvent<{aud: AudienciaC}>>>;
 
     activeDayIsOpen = false;
+    rol: number;
 
-    constructor(private _http: HttpClient, private _Aservice: AudienciaService, private toastr: ToastrService ) { }
+    constructor(private _http: HttpClient, private _Aservice: AudienciaService, private toastr: ToastrService ) {
+        }
 
     ngOnInit(): void {
         this.fetchEvents();
@@ -161,4 +168,5 @@ export class InicioComponent implements OnInit {
     eventClicked(event: CalendarEvent<{ aud: AudienciaC }>): void {
 
     }
+
 }

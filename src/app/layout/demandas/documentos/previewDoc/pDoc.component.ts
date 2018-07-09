@@ -24,6 +24,8 @@ export class PDocComponent implements OnInit {
     private parms: any;
     private claveDoc: number;
     public doc: DocumentoC;
+    public uri: string;
+    public docName: string;
 
 
 
@@ -45,6 +47,8 @@ export class PDocComponent implements OnInit {
                                 this._Dservice.setDocumentos(data);
                                 this.doc = this._Dservice.getDocumentoByID(this.claveDoc);
                                 console.log(this.doc);
+                                this.uri = this.doc.DocRuta;
+                                this.docName = this.doc.DocNombre;
                             } else {
                                 this.toastr.error('Error al obtener informacion');
 

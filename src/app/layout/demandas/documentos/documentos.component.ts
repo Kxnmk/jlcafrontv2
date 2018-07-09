@@ -4,6 +4,7 @@ import { DocumentoC } from '../../../classes/Documento';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DocumentosService } from '../../../shared/services/documentos.service';
+import { UrlServ } from '../../../global-setting';
 
 @Component({
     selector: 'app-documentos',
@@ -31,6 +32,7 @@ export class DocumentosComponent implements OnInit {
                         if (data.length !== 0) {
                             this.documentos = data;
                             this._DService.setDocumentos(data);
+                            console.log(this.documentos);
                         } else {
                             this.toastr.info('Esta Demanda Aun no tiene Documentos');
 
@@ -49,5 +51,10 @@ export class DocumentosComponent implements OnInit {
 
     agregar() {
         this.router.navigate(['/mDoc']);
+    }
+
+    descargarArchivo(url) {
+        console.log(url);
+        const nW = window.open(UrlServ + /upload/ + url);
     }
 }

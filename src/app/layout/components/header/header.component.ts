@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Usuario } from '../../../classes/Usuario';
+import { DemandasService } from '../../../shared/services/demandas.service';
+import { ToastrService } from 'ngx-toastr';
+import { DemandaCon } from '../../../classes/Demanda';
 
 @Component({
     selector: 'app-header',
@@ -11,12 +14,20 @@ import { Usuario } from '../../../classes/Usuario';
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
     usuarioName;
+    usuarioRol;
+    demandas: DemandaCon[];
+    rol: number;
+    size = 0;
 
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router, private _DService: DemandasService, 
+        private toastr: ToastrService) {
 
         try {
             this.usuarioName = JSON.parse(sessionStorage.getItem('User'))[0].usrNombre;
+            this.usuarioRol = JSON.parse(sessionStorage.getItem('User'))[0].RolDescripcion;
+            this.rol = JSON.parse(sessionStorage.getItem('User'))[0].RolClave;
         } catch (Error) {}
+
 
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
@@ -33,6 +44,20 @@ export class HeaderComponent implements OnInit {
                 this.toggleSidebar();
             }
         });
+
+        this._DService.getDemadnasByRol(this.rol).subscribe(
+            data => {
+                if (data.length !== 0) {
+                    this.demandas = data;
+                    this.size = data.length;
+                } else {
+                    this.toastr.error('No hay Demandas Registradas');
+                }
+            },
+            err => {
+                console.log(err);
+                this.toastr.error('Error en el servidor');
+            });
     }
 
 

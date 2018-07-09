@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
         const password = (<HTMLInputElement>document.getElementById('password')).value;
         const cred = { usrName: usuario, usrPassword: password };
 
-        console.log(UrlServ + '/usuarios/auth');
         this.toastr.info('Cargando', 'Conectado con el servidor', {
             timeOut: 1000
         });
@@ -39,7 +38,6 @@ export class LoginComponent implements OnInit {
                     this.uLog = data;
                     sessionStorage.setItem('User', JSON.stringify(this.uLog));
                     localStorage.setItem('isLoggedin', 'true');
-                    console.log(this.uLog);
                     this.router.navigate(['/inicio']);
                 } else {
                     this.toastr.error('Usuario o contraseña no valida intente de nuevo');

@@ -137,19 +137,22 @@ export class MAudComponent implements OnInit {
         const btn = <HTMLInputElement>document.getElementById('btnGuardar');
         btn.style.display = 'none';
 
-        const clave = (<HTMLInputElement>document.getElementById('AudClave')).value;
         const demanda = (<HTMLInputElement>document.getElementById('AudDemanda')).value;
         const mesa = (<HTMLInputElement>document.getElementById('AudClaveMesa')).value;
         const fecha = (<HTMLInputElement>document.getElementById('AudFecha')).value;
         const hora = (<HTMLInputElement>document.getElementById('AudHora')).value;
         const notas = (<HTMLInputElement>document.getElementById('AudNotas')).value;
         const nAud = new Audiencia();
-        nAud.AudClave = +clave;
+
         nAud.AudClaveDemanda = +demanda;
         nAud.AudClaveMesa = +mesa;
         nAud.AudFecha = fecha;
         nAud.AudHora = hora;
         nAud.AudNotas = notas;
+        if (this.hd) {
+            const clave = (<HTMLInputElement>document.getElementById('AudClave')).value;
+            nAud.AudClave = +clave;
+        }
 
 
         if (this.action === 'mod') {

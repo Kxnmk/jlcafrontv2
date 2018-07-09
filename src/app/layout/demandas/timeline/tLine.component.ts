@@ -16,6 +16,7 @@ import { StatusTime } from '../../../classes/Status';
 
 
 @Component({
+    // tslint:disable-next-line:component-selector
     selector: 'app-tLine',
     templateUrl: './tLine.component.html',
     styleUrls: ['./tLine.component.scss'],

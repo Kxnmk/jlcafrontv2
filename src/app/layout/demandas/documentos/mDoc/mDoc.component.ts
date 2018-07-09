@@ -14,6 +14,7 @@ import { Mesa, Mesac } from '../../../../classes/mesa';
 import { Location } from '@angular/common';
 import { DocumentoC, DocumentoCo, Documento } from '../../../../classes/Documento';
 import { DocumentosService } from '../../../../shared/services/documentos.service';
+import { UrlServ } from '../../../../global-setting';
 
 
 @Component({
@@ -117,6 +118,11 @@ export class MDocComponent implements OnInit {
 
     lastPage() {
         this._loc.back();
+    }
+
+    descargarArchivo(url) {
+        console.log(url);
+        const nW = window.open(UrlServ + /upload/ + url);
     }
 
 }
