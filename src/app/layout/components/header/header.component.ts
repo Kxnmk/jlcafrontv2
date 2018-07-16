@@ -12,16 +12,16 @@ import { DemandaCon } from '../../../classes/Demanda';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+    // tslint:disable-next-line:no-inferrable-types
     pushRightClass: string = 'push-right';
     usuarioName;
     usuarioRol;
-    demandas: DemandaCon[];
+    demandas: DemandaCon[] = [];
     rol: number;
     size = 0;
 
     constructor(private translate: TranslateService, public router: Router, private _DService: DemandasService,
         private toastr: ToastrService) {
-
         try {
             this.usuarioName = JSON.parse(sessionStorage.getItem('User'))[0].usrNombre;
             this.usuarioRol = JSON.parse(sessionStorage.getItem('User'))[0].RolDescripcion;
@@ -48,8 +48,12 @@ export class HeaderComponent implements OnInit {
         this._DService.getDemadnasByRol(this.rol).subscribe(
             data => {
                 if (data.length !== 0) {
-                    this.demandas = data;
-                    this.size = data.length;
+                    for (const de of data) {
+                        if (de.StaClave !== 5 && de.StaClave !==6 ) {
+                            this.demandas.push(de);
+                        }
+                    }
+                    this.size = this.demandas.length;
                 } else {
                     this.toastr.error('No hay Demandas Registradas');
                 }
