@@ -43,4 +43,8 @@ export class DemandasComponent implements OnInit {
         sessionStorage.setItem('demFolio', dem.DemFolio);
         this.router.navigate(['/documentos', dem.DemClave]);
     }
+    showHisto(dem: DemandaCon) {
+        sessionStorage.setItem('demFolio', dem.DemFolio);
+        this.router.navigate(['/histo', dem.DemClave]);
+    }
 }

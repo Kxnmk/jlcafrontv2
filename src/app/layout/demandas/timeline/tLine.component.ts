@@ -27,7 +27,7 @@ export class TLineComponent implements OnInit {
     public status: StatusTime[];
     private claveDem: number;
 
-    public title = 'Historico ';
+    public title = 'Histórico ';
     previousUrl: string;
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _loc: Location, private _Cservice: CatalogosServiceService) {}
@@ -44,7 +44,7 @@ export class TLineComponent implements OnInit {
                         data => {
                             if (data.length !== 0) {
                                 this.status = data;
-                                const aux = sessionStorage.getItem('titleDem');
+                                const aux = sessionStorage.getItem('demFolio');
                                 this.title = this.title + aux;
                             } else {
                                 this.toastr.error('Error al obtener informacion');
