@@ -11,9 +11,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { DocumentosService } from '../../../../shared/services/documentos.service';
 import { DocumentoC } from '../../../../classes/Documento';
-
-
-
 @Component({
     selector: 'app-pDoc',
     templateUrl: './pDoc.component.html',
@@ -26,20 +23,13 @@ export class PDocComponent implements OnInit {
     public doc: DocumentoC;
     public uri: string;
     public docName: string;
-
-
-
     constructor(private route: ActivatedRoute, private toastr: ToastrService,
         private router: Router, private _loc: Location, private _Dservice: DocumentosService) {}
-
     ngOnInit() {
         this.parms = this.route.params.subscribe(params => {
             try {
                 this.claveDoc = +params['id'];
-
                 if (!isNaN(this.claveDoc)) {
-
-
                     const demid = +sessionStorage.getItem('demID');
                     this._Dservice.getDocumentosByDemanda(demid).subscribe(
                         data => {
@@ -60,21 +50,14 @@ export class PDocComponent implements OnInit {
 
                         });
                 } else {
-
-
                 }
 
             } catch (err) {
-
-
             }
         });
 
     }
-
     lastPage() {
         this._loc.back();
     }
-
-
 }
